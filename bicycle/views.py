@@ -5,6 +5,33 @@ from django.contrib.auth.models import User
 from .models import Car, Booking
 from datetime import datetime
 
+
+@login_required
+def booking_list(request):
+    bookings = Booking.objects.select_related('car', 'user').order_by('start_date')
+    return render(request, 'booking_list.html', {'bookings': bookings})
+
+
+@login_required
+def booking_detail(request, booking_id):
+    booking = get_object_or_404(Booking.objects.select_related('car', 'user'), id=booking_id)
+    return render(request, 'booking_detail.html', {'booking': booking})
+
+
+@login_required
+def booking_edit(request, booking_id):
+    booking = get_object_or_404(Booking.objects.select_related('car', 'user'), id=booking_id)
+    if request.method == 'POST':
+        start = datetime.strptime(request.POST['start_date'], '%Y-%m-%d').date()
+        end = datetime.strptime(request.POST['end_date'], '%Y-%m-%d').date()
+        booking.start_date = start
+        booking.end_date = end
+        booking.total_price = (end - start).days + 1
+        booking.total_price = booking.total_price * booking.car.price_per_day
+        booking.save()
+        return redirect('booking_detail', booking_id=booking.id)
+    return render(request, 'booking_edit.html', {'booking': booking})
+
 def login_view(request):
     if request.method == 'POST':
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])

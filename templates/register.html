@@ -1,1 +1,7 @@
-<form method='post'>{% csrf_token %}<input name='username'><input name='email'><input type='password' name='password1'><button>Register</button></form>
+<form method='post'>{% csrf_token %}
+    <h2>Créer un compte</h2>
+    <input name='username' placeholder='Nom d’utilisateur'><br>
+    <input name='email' placeholder='Email'><br>
+    <input type='password' name='password1' placeholder='Mot de passe'><br>
+    <button>S’inscrire</button>
+</form>

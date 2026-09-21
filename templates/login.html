@@ -1,1 +1,6 @@
-<form method='post'>{% csrf_token %}<input name='username'><input type='password' name='password'><button>Login</button></form>
+<form method='post'>{% csrf_token %}
+    <h2>Connexion</h2>
+    <input name='username' placeholder='Nom d’utilisateur'><br>
+    <input type='password' name='password' placeholder='Mot de passe'><br>
+    <button>Se connecter</button>
+</form>
