@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Archiver la réservation" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Archiver cette réservation ?" %}</h1>
+</div>
+
+<div class="card">
+    <p>
+        {% blocktrans with id=object.pk %}La réservation #{{ id }} sera archivée (suppression logique).{% endblocktrans %}
+    </p>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn--danger" type="submit">{% trans "Confirmer l'archivage" %}</button>
+        <a class="btn btn--ghost" href="{% url 'bookings:booking_detail' object.pk %}">{% trans "Annuler" %}</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ car.full_name }}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{{ car.full_name }} <span class="muted">· {{ car.plate_number }}</span></h1>
+    <div class="page-head__actions">
+        <a class="btn" href="{% url 'bookings:booking_add' %}?car={{ car.pk }}">+ {% trans "Réserver" %}</a>
+        <a class="btn btn--ghost" href="{% url 'vehicles:car_edit' car.pk %}">{% trans "Modifier" %}</a>
+        <a class="btn btn--danger" href="{% url 'vehicles:car_delete' car.pk %}">{% trans "Archiver" %}</a>
+    </div>
+</div>
+
+<div class="grid grid--2">
+    <div class="card">
+        <h2>{% trans "Fiche technique" %}</h2>
+        <dl class="kv">
+            <dt>{% trans "Catégorie" %}</dt><dd>{{ car.category.get_name_display }}</dd>
+            <dt>{% trans "État" %}</dt><dd><span class="badge badge--{{ car.status }}">{{ car.get_status_display }}</span></dd>
+            <dt>{% trans "Prix / jour" %}</dt><dd>{{ car.price_per_day|floatformat:2 }} MAD</dd>
+            <dt>{% trans "Carburant" %}</dt><dd>{{ car.get_fuel_type_display }}</dd>
+            <dt>{% trans "Boîte" %}</dt><dd>{{ car.get_transmission_display }}</dd>
+            <dt>{% trans "Places" %}</dt><dd>{{ car.seats }}</dd>
+            <dt>{% trans "Année" %}</dt><dd>{{ car.year }}</dd>
+            <dt>{% trans "Kilométrage" %}</dt><dd>{{ car.mileage }} km</dd>
+        </dl>
+        {% if car.description %}<p>{{ car.description }}</p>{% endif %}
+
+        <form action="{% url 'vehicles:car_status' car.pk %}" method="post" class="filter-bar">
+            {% csrf_token %}
+            <div class="field">
+                <label for="status">{% trans "Changer l'état" %}</label>
+                <select id="status" name="status">
+                    <option value="available">{% trans "Disponible" %}</option>
+                    <option value="rented">{% trans "Loué" %}</option>
+                    <option value="maintenance">{% trans "En maintenance" %}</option>
+                    <option value="out_of_service">{% trans "Hors service" %}</option>
+                </select>
+            </div>
+            <button class="btn btn--ghost" type="submit">{% trans "Mettre à jour" %}</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Photos" %}</h2>
+        {% if car.main_image %}
+            <img class="photo-main" src="{{ car.main_image.url }}" alt="{{ car.full_name }}">
+        {% endif %}
+        {% if images %}
+            <div class="gallery">
+                {% for image in images %}
+                    <img src="{{ image.image.url }}" alt="{{ car.full_name }}">
+                {% endfor %}
+            </div>
+        {% elif not car.main_image %}
+            <p class="muted">{% trans "Aucune photo." %}</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="grid grid--2">
+    <div class="card">
+        <h2>{% trans "Historique des réservations" %}</h2>
+        <div class="table-wrap">
+            <table class="data">
+                <thead>
+                    <tr><th>{% trans "Client" %}</th><th>{% trans "Période" %}</th><th>{% trans "Statut" %}</th></tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                        <tr>
+                            <td><a href="{% url 'bookings:booking_detail' booking.pk %}">{{ booking.client.name }}</a></td>
+                            <td class="nowrap">{{ booking.start_date|date:"d/m/Y" }} → {{ booking.end_date|date:"d/m/Y" }}</td>
+                            <td><span class="badge badge--{{ booking.status }}">{{ booking.get_status_display }}</span></td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="3" class="empty">{% trans "Aucune réservation." %}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Maintenance" %}</h2>
+        <div class="table-wrap">
+            <table class="data">
+                <thead>
+                    <tr><th>{% trans "Date" %}</th><th>{% trans "Description" %}</th><th class="num">{% trans "Coût" %}</th></tr>
+                </thead>
+                <tbody>
+                    {% for maintenance in maintenances %}
+                        <tr>
+                            <td class="nowrap">{{ maintenance.date|date:"d/m/Y" }}</td>
+                            <td>{{ maintenance.description|truncatechars:60 }}</td>
+                            <td class="num">{{ maintenance.cost|floatformat:2 }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="3" class="empty">{% trans "Aucune intervention." %}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <p><a href="{% url 'vehicles:maintenance_add' %}">+ {% trans "Ajouter une intervention" %}</a></p>
+    </div>
+</div>
+{% endblock %}

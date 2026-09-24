@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Tableau de bord" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Tableau de bord" %}</h1>
+    <span class="muted">{{ today|date:"l d F Y" }}</span>
+    <div class="page-head__actions">
+        <a class="btn" href="{% url 'bookings:booking_add' %}">+ {% trans "Nouvelle réservation" %}</a>
+        <a class="btn btn--ghost" href="{% url 'vehicles:car_list' %}?status=available">{% trans "Véhicules disponibles" %}</a>
+    </div>
+</div>
+
+{% if scoped_to_me %}
+    <p class="muted">
+        {% trans "Les réservations affichées ci-dessous sont uniquement les vôtres. Les statistiques du parc restent globales." %}
+    </p>
+{% endif %}
+
+<div class="grid grid--stats">
+    <div class="stat stat--ok">
+        <span class="stat__label">{% trans "Véhicules disponibles" %}</span>
+        <span class="stat__value">{{ available_cars_count }}</span>
+    </div>
+    <div class="stat">
+        <span class="stat__label">{% trans "Véhicules en location" %}</span>
+        <span class="stat__value">{{ cars_out }}</span>
+    </div>
+    <div class="stat stat--warn">
+        <span class="stat__label">{% trans "En maintenance" %}</span>
+        <span class="stat__value">{{ cars_in_maintenance }}</span>
+    </div>
+    <div class="stat">
+        <span class="stat__label">{% trans "Départs aujourd'hui" %}</span>
+        <span class="stat__value">{{ pickups_today }}</span>
+    </div>
+    <div class="stat">
+        <span class="stat__label">{% trans "Retours aujourd'hui" %}</span>
+        <span class="stat__value">{{ returns_today }}</span>
+    </div>
+    <div class="stat stat--ok">
+        <span class="stat__label">{% trans "Chiffre du mois" %}</span>
+        <span class="stat__value">{{ revenue_month|floatformat:2 }}</span>
+    </div>
+    <div class="stat {% if pending_edit_requests %}stat--warn{% endif %}">
+        <span class="stat__label">{% trans "Demandes en attente" %}</span>
+        <span class="stat__value">{{ pending_edit_requests }}</span>
+    </div>
+    <div class="stat">
+        <span class="stat__label">{% trans "Parc total" %}</span>
+        <span class="stat__value">{{ fleet_total }}</span>
+    </div>
+</div>
+
+<div class="grid grid--2">
+    <div class="card">
+        <h2>{% trans "Réservations du jour" %}</h2>
+        <div class="table-wrap">
+            <table class="data">
+                <thead>
+                    <tr>
+                        <th>{% trans "Client" %}</th>
+                        <th>{% trans "Véhicule" %}</th>
+                        <th>{% trans "Retour" %}</th>
+                        <th>{% trans "Statut" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in today_bookings %}
+                        <tr>
+                            <td><a href="{% url 'bookings:booking_detail' booking.pk %}">{{ booking.client.name }}</a></td>
+                            <td>{{ booking.car.full_name }}<br><small class="muted">{{ booking.car.plate_number }}</small></td>
+                            <td class="nowrap">{{ booking.end_date|date:"d/m/Y" }}</td>
+                            <td><span class="badge badge--{{ booking.status }}">{{ booking.get_status_display }}</span></td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="4" class="empty">{% trans "Aucun départ aujourd'hui." %}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Dernières réservations" %}</h2>
+        <div class="table-wrap">
+            <table class="data">
+                <thead>
+                    <tr>
+                        <th>{% trans "N°" %}</th>
+                        <th>{% trans "Client" %}</th>
+                        <th>{% trans "Période" %}</th>
+                        <th class="num">{% trans "Total" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in recent_bookings %}
+                        <tr>
+                            <td>#{{ booking.pk }}</td>
+                            <td><a href="{% url 'bookings:booking_detail' booking.pk %}">{{ booking.client.name }}</a></td>
+                            <td class="nowrap">{{ booking.start_date|date:"d/m" }} → {{ booking.end_date|date:"d/m" }}</td>
+                            <td class="num">{{ booking.total_price|floatformat:2 }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="4" class="empty">{% trans "Aucune réservation." %}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid--2">
+    <div class="card">
+        <h2>{% trans "Parc par état" %}</h2>
+        <div class="table-wrap">
+            <table class="data">
+                <tbody>
+                    {% for row in fleet_by_status %}
+                        <tr>
+                            <td><span class="badge badge--{{ row.status }}">{{ row.status }}</span></td>
+                            <td class="num">{{ row.total }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr><td class="empty">{% trans "Parc vide." %}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Parc par catégorie" %}</h2>
+        <div class="table-wrap">
+            <table class="data">
+                <tbody>
+                    {% for row in fleet_by_category %}
+                        <tr>
+                            <td>{{ row.category__name|default:"—" }}</td>
+                            <td class="num">{{ row.total }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr><td class="empty">{% trans "Parc vide." %}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

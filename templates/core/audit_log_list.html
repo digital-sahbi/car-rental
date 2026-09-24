@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Journal d'audit" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Journal d'audit" %}</h1>
+    <span class="muted">{% trans "Historique complet et immuable des actions." %}</span>
+</div>
+
+<form method="get" class="filter-bar">
+    <div class="field">
+        <label for="q">{% trans "Recherche" %}</label>
+        <input type="search" id="q" name="q" value="{{ q }}" placeholder="{% trans 'Objet, utilisateur…' %}">
+    </div>
+    <div class="field">
+        <label for="action">{% trans "Action" %}</label>
+        <select id="action" name="action">
+            <option value="">{% trans "Toutes" %}</option>
+            {% for value, label in action_choices %}
+                <option value="{{ value }}" {% if value == action_filter %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="field">
+        <label for="model">{% trans "Modèle" %}</label>
+        <select id="model" name="model">
+            <option value="">{% trans "Tous" %}</option>
+            {% for name in model_choices %}
+                <option value="{{ name }}" {% if name == model_filter %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn--ghost" type="submit">{% trans "Filtrer" %}</button>
+</form>
+
+<div class="card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>{% trans "Horodatage" %}</th>
+                    <th>{% trans "Utilisateur" %}</th>
+                    <th>{% trans "Action" %}</th>
+                    <th>{% trans "Objet" %}</th>
+                    <th>{% trans "Détail" %}</th>
+                    <th>{% trans "IP" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entries %}
+                    <tr>
+                        <td class="nowrap">{{ entry.timestamp|date:"d/m/Y H:i:s" }}</td>
+                        <td>{{ entry.user|default:"—" }}</td>
+                        <td><span class="badge badge--{{ entry.action|lower }}">{{ entry.get_action_display }}</span></td>
+                        <td>{{ entry.model_name }}#{{ entry.object_id }}<br><small class="muted">{{ entry.object_repr }}</small></td>
+                        <td><small class="muted">{{ entry.changes|truncatechars:140 }}</small></td>
+                        <td class="nowrap">{{ entry.ip_address|default:"—" }}</td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="6" class="empty">{% trans "Aucune entrée." %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "partials/pagination.html" %}
+{% endblock %}

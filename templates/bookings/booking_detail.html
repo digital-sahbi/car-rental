@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Réservation" %} #{{ booking.pk }}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Réservation" %} #{{ booking.pk }}</h1>
+    <span class="badge badge--{{ booking.status }}">{{ booking.get_status_display }}</span>
+    <div class="page-head__actions">
+        {% if invoice %}
+            <a class="btn" href="{% url 'invoicing:invoice_print' booking.pk %}" target="_blank" rel="noopener">🖨 {% trans "Imprimer (HTML)" %}</a>
+            <a class="btn btn--ghost" href="{% url 'invoicing:invoice_pdf' booking.pk %}">⬇ {% trans "Télécharger (PDF)" %}</a>
+        {% endif %}
+        <a class="btn btn--ghost" href="{% url 'bookings:booking_edit' booking.pk %}">
+            {% if can_edit %}{% trans "Modifier" %}{% else %}{% trans "Demander une modification" %}{% endif %}
+        </a>
+    </div>
+</div>
+
+<div class="grid grid--2">
+    <div class="card">
+        <h2>{% trans "Client" %}</h2>
+        <dl class="kv">
+            <dt>{% trans "Nom" %}</dt><dd><a href="{% url 'clients:client_detail' booking.client.pk %}">{{ booking.client.name }}</a></dd>
+            <dt>{% trans "Téléphone" %}</dt><dd>{{ booking.client.telephone }}</dd>
+            <dt>{% trans "Pays" %}</dt><dd>{{ booking.client.country }}</dd>
+            <dt>{% trans "Document" %}</dt><dd>{{ booking.client.id_document|default:"—" }}</dd>
+        </dl>
+        {% if booking.client.whatsapp_link %}
+            <p><a class="btn btn--ok btn--sm" href="{{ booking.client.whatsapp_link }}" target="_blank" rel="noopener">{% trans "Contacter sur WhatsApp" %}</a></p>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Véhicule" %}</h2>
+        <dl class="kv">
+            <dt>{% trans "Modèle" %}</dt><dd>{{ booking.car.full_name }}</dd>
+            <dt>{% trans "Immatriculation" %}</dt><dd>{{ booking.car.plate_number }}</dd>
+            <dt>{% trans "Catégorie" %}</dt><dd>{{ booking.car.category.get_name_display }}</dd>
+            <dt>{% trans "Carburant / Boîte" %}</dt><dd>{{ booking.car.get_fuel_type_display }} · {{ booking.car.get_transmission_display }}</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="grid grid--2">
+    <div class="card">
+        <h2>{% trans "Dates et lieux" %}</h2>
+        <dl class="kv">
+            <dt>{% trans "Départ" %}</dt><dd>{{ booking.start_date|date:"d/m/Y" }}</dd>
+            <dt>{% trans "Retour" %}</dt><dd>{{ booking.end_date|date:"d/m/Y" }}</dd>
+            <dt>{% trans "Jours facturés" %}</dt><dd>{{ booking.days }}</dd>
+            <dt>{% trans "Prise en charge" %}</dt><dd>{{ booking.pickup_location|default:"—" }}</dd>
+            <dt>{% trans "Restitution" %}</dt><dd>{{ booking.return_location|default:"—" }}</dd>
+            <dt>{% trans "Carburant" %}</dt><dd>{{ booking.get_fuel_policy_display }}</dd>
+            <dt>{% trans "Kilométrage" %}</dt><dd>{{ booking.get_mileage_policy_display }}{% if booking.mileage_limit %} ({{ booking.mileage_limit }} km){% endif %}</dd>
+        </dl>
+        {% if booking.notes %}<p><strong>{% trans "Notes" %} :</strong> {{ booking.notes }}</p>{% endif %}
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Montants" %}</h2>
+        <dl class="kv">
+            <dt>{% trans "Prix / jour" %}</dt><dd>{{ booking.car.price_per_day|floatformat:2 }} MAD</dd>
+            <dt>{% trans "Location" %}</dt><dd>{{ booking.base_price|floatformat:2 }} MAD</dd>
+            {% for option in options %}
+                <dt>{{ option.get_option_type_display }} × {{ option.quantity }}</dt>
+                <dd>{{ option.subtotal|floatformat:2 }} MAD</dd>
+            {% endfor %}
+            <dt><strong>{% trans "Total réservation" %}</strong></dt>
+            <dd><strong>{{ booking.total_price|floatformat:2 }} MAD</strong></dd>
+        </dl>
+
+        {% if invoice %}
+            <hr>
+            <dl class="kv">
+                <dt>{% trans "Facture" %}</dt><dd><strong>{{ invoice.number }}</strong> ({{ invoice.issued_at|date:"d/m/Y" }})</dd>
+                <dt>{% trans "Sous-total" %}</dt><dd>{{ invoice.subtotal|floatformat:2 }} MAD</dd>
+                {% if invoice.discount_amount %}
+                    <dt>{% trans "Remise" %} {{ invoice.promotion_code }}</dt><dd>− {{ invoice.discount_amount|floatformat:2 }} MAD</dd>
+                {% endif %}
+                <dt>{% trans "TVA" %} {{ invoice.vat_rate }}%</dt><dd>{{ invoice.vat_amount|floatformat:2 }} MAD</dd>
+                <dt><strong>{% trans "Net à payer" %}</strong></dt><dd><strong>{{ invoice.total_amount|floatformat:2 }} MAD</strong></dd>
+                <dt>{% trans "Impressions" %}</dt><dd>{{ invoice.printed_count }}</dd>
+            </dl>
+        {% else %}
+            <hr>
+            <form action="{% url 'invoicing:invoice_issue' booking.pk %}" method="post" class="filter-bar">
+                {% csrf_token %}
+                <div class="field">
+                    <label for="promotion_code">{% trans "Code promotion (optionnel)" %}</label>
+                    <input type="text" id="promotion_code" name="promotion_code" placeholder="PROMO-2026">
+                </div>
+                <button class="btn btn--ok" type="submit" data-confirm="{% trans 'Émettre la facture ? Cette action est définitive.' %}">
+                    {% trans "Émettre la facture" %}
+                </button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+
+<div class="grid grid--2">
+    <div class="card">
+        <h2>{% trans "Changer le statut" %}</h2>
+        <form action="{% url 'bookings:booking_status' booking.pk %}" method="post" class="filter-bar">
+            {% csrf_token %}
+            <div class="field">
+                <select name="status">
+                    <option value="pending" {% if booking.status == "pending" %}selected{% endif %}>{% trans "En attente" %}</option>
+                    <option value="confirmed" {% if booking.status == "confirmed" %}selected{% endif %}>{% trans "Confirmée" %}</option>
+                    <option value="ongoing" {% if booking.status == "ongoing" %}selected{% endif %}>{% trans "En cours" %}</option>
+                    <option value="completed" {% if booking.status == "completed" %}selected{% endif %}>{% trans "Terminée" %}</option>
+                    <option value="cancelled" {% if booking.status == "cancelled" %}selected{% endif %}>{% trans "Annulée" %}</option>
+                </select>
+            </div>
+            <button class="btn btn--ghost" type="submit">{% trans "Mettre à jour" %}</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Demandes de modification" %}</h2>
+        <div class="table-wrap">
+            <table class="data">
+                <thead>
+                    <tr><th>{% trans "Demandeur" %}</th><th>{% trans "Motif" %}</th><th>{% trans "Statut" %}</th></tr>
+                </thead>
+                <tbody>
+                    {% for request_item in edit_requests %}
+                        <tr>
+                            <td>{{ request_item.requested_by.get_full_name }}</td>
+                            <td>{{ request_item.reason|truncatechars:70 }}</td>
+                            <td><span class="badge badge--{{ request_item.status }}">{{ request_item.get_status_display }}</span></td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="3" class="empty">{% trans "Aucune demande." %}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

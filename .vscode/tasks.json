@@ -1,0 +1,657 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Django: run tests",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Django: accounts tests",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.accounts",
+				"--verbosity=2"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Django: run tests",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Django: run tests verbose",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--verbosity=2"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Django: tests to file",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"-c",
+				"import subprocess,sys,os; os.chdir(r'C:\\laragon\\www\\car-managment-django'); r=subprocess.run([sys.executable,'manage.py','test','--verbosity=1'],capture_output=True,text=True); open(r'C:\\Users\\Sahbi\\AppData\\Local\\Temp\\crm-tests.txt','w',encoding='utf-8').write(r.stdout+chr(10)+'=== STDERR ==='+chr(10)+r.stderr); print('exit', r.returncode)"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Django: tests to file",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\run_crm_tests.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Django: suite report",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\run_crm_tests.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Convert: test log",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\convert_tests.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Django: failure report",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\report_tests.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Django: failure report v2",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\report_tests2.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Django: report v3",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\report_tests3.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: invoicing",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.invoicing",
+				"--verbosity=2"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: invoicing issues",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.invoicing.tests.test_services.IssuingRulesTests",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: other apps",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.bookings",
+				"apps.vehicles",
+				"apps.core",
+				"apps.clients",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: vehicles clients",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles",
+				"apps.clients",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: full suite fast",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: full suite fast 2",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: final verification",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: repro picture bug",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles.tests.test_services.PictureUpdateTests",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: verify picture fix",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles.tests.test_services.PictureUpdateTests",
+				"--settings=config.settings.test",
+				"--verbosity=2"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: regression after fix",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: repro picture clear",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles.tests.test_views",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: vehicles after apply_form_data",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: vehicles fixed",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: full suite after picture fix",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: full suite final",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: repro main image",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles.tests.test_services.MainImagePrecedenceTests",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: vehicles main image fix",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: vehicles retest",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Debug: formset errors",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\debug_formset.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: vehicles final",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: full suite photos",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Debug: booking 21",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\debug_bookings.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "Debug: booking list HTML",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\debug_bookings2.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: bookings ordering",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.bookings",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: full suite ordering",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: visibility tests",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.bookings.tests.test_permissions",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: visibility retest",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.bookings.tests.test_permissions",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: full suite visibility",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: notification tests",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.core.tests.test_notifications",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: notification tests 2",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.core.tests.test_notifications",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: full suite notifications",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: full suite notif final",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: repro maintenance bug",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles.tests.test_views.MaintenanceFormFlowTests",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: maintenance fixed",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"apps.vehicles.tests.test_views.MaintenanceFormFlowTests",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "T: full suite maintenance fix",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"manage.py",
+				"test",
+				"--settings=config.settings.test",
+				"--verbosity=1"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: extract msgids",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"tools/extract_messages.py",
+				"--json",
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\crm-msgids.json"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: dump list",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\dump_msgids.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: compile ar",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"tools/compile_messages.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: verify mo",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\check_mo.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: check django",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\check_django_i18n.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: audit templates",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\audit_i18n.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: inspect fields",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\check_fields.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: verify content",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\check_fields.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: dump msgids",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\build_en.py",
+				"dump"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: build en po",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\build_en.py",
+				"build"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: compile all",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"tools/compile_messages.py"
+			],
+			"group": "test"
+		},
+		{
+			"label": "i18n: verify en",
+			"type": "shell",
+			"command": "C:\\laragon\\bin\\python\\python-3.13\\python.exe",
+			"args": [
+				"C:\\Users\\Sahbi\\AppData\\Local\\Temp\\check_en.py"
+			],
+			"group": "test"
+		}
+	]
+}

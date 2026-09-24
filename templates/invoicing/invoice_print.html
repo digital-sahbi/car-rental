@@ -1,0 +1,93 @@
+{% load i18n %}<!DOCTYPE html>
+<html lang="{{ current_language|default:'fr' }}" dir="{% if is_rtl %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="utf-8">
+    <title>{{ invoice.number }}</title>
+    <style>
+        :root { --ink: #111; --dim: #666; --line: #ccc; }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0; padding: 24px; background: #f3f4f6; color: var(--ink);
+            font: 14px/1.45 "Segoe UI", Roboto, Arial, sans-serif;
+        }
+        .sheet {
+            max-width: 820px; margin: 0 auto; background: #fff; padding: 34px 38px;
+            border-radius: 6px; box-shadow: 0 2px 14px rgba(0,0,0,.12);
+        }
+        .toolbar { max-width: 820px; margin: 0 auto 16px; display: flex; gap: 10px; justify-content: flex-end; }
+        .toolbar button, .toolbar a {
+            padding: 9px 16px; border-radius: 6px; border: 1px solid #d1d5db;
+            background: #fff; color: var(--ink); font: inherit; font-weight: 600;
+            cursor: pointer; text-decoration: none;
+        }
+        .toolbar button.primary { background: #3b82f6; border-color: #3b82f6; color: #fff; }
+
+        /* ---- invoice ---- */
+        .inv__head { display: flex; justify-content: space-between; gap: 24px; border-bottom: 2px solid var(--ink); padding-bottom: 14px; }
+        .inv__company h1 { margin: 0 0 6px; font-size: 20px; }
+        .inv__company p { margin: 0; color: var(--dim); font-size: 13px; }
+        .inv__ids { font-size: 11px !important; }
+        .inv__logo { max-height: 54px; margin-bottom: 6px; }
+        .inv__meta { text-align: end; }
+        .inv__meta h2 { margin: 0; font-size: 22px; letter-spacing: .06em; }
+        .inv__number { font-size: 17px; font-weight: 700; margin: 4px 0; }
+        .inv__meta p { margin: 0; color: var(--dim); font-size: 13px; }
+
+        .inv__parties { display: flex; gap: 28px; margin: 20px 0; }
+        .inv__party { flex: 1; }
+        .inv__party h3 { margin: 0 0 6px; font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--dim); }
+        .inv__party p { margin: 0; font-size: 13px; }
+        .inv__strong { font-weight: 700; font-size: 14px !important; }
+
+        .inv__period { margin-bottom: 16px; }
+        .inv__times { width: 100%; border-collapse: collapse; }
+        .inv__times th, .inv__times td { border: 1px solid var(--line); padding: 7px 10px; font-size: 13px; }
+        .inv__times th { background: #f7f7f7; text-align: start; width: auto; font-weight: 600; }
+
+        .inv__lines { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+        .inv__lines th, .inv__lines td { border: 1px solid var(--line); padding: 8px 10px; font-size: 13px; }
+        .inv__lines thead th { background: #f7f7f7; text-align: start; }
+        .inv__lines small { color: var(--dim); }
+
+        .inv__totals { display: flex; justify-content: flex-end; }
+        .inv__totals table { border-collapse: collapse; min-width: 320px; }
+        .inv__totals th, .inv__totals td { padding: 7px 10px; font-size: 13px; border-bottom: 1px solid var(--line); }
+        .inv__totals th { text-align: start; color: var(--dim); font-weight: 500; }
+        .inv__grand th, .inv__grand td { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); font-size: 15px; font-weight: 700; color: var(--ink); }
+
+        .inv__foot { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 14px; color: var(--dim); font-size: 12px; }
+        .inv__bank h4 { margin: 0 0 4px; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--dim); }
+        .inv__bank p { margin: 0 0 10px; }
+        .inv__footer-text { white-space: pre-line; }
+        .inv__legal { font-size: 11px; }
+
+        .num { text-align: end; font-variant-numeric: tabular-nums; }
+
+        @page { size: A4; margin: 14mm; }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            .sheet { box-shadow: none; border-radius: 0; max-width: none; padding: 0; }
+            .toolbar { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="toolbar">
+        <a href="{% url 'invoicing:invoice_pdf' invoice.booking_id %}">{% trans "Télécharger le PDF" %}</a>
+        <button class="primary" onclick="window.print()">🖨 {% trans "Imprimer" %}</button>
+        <button onclick="window.close()">{% trans "Fermer" %}</button>
+    </div>
+
+    <div class="sheet">
+        {% include "invoicing/_invoice_body.html" %}
+    </div>
+
+    <script>
+        // Print immediately when opened from the "Print (HTML)" button.
+        window.addEventListener("load", function () {
+            if (window.opener) window.print();
+        });
+    </script>
+</body>
+</html>

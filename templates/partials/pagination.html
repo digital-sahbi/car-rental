@@ -1,0 +1,20 @@
+{% load i18n %}
+{% if is_paginated %}
+    <nav class="pagination" aria-label="{% trans 'Pagination' %}">
+        {% if page_obj.has_previous %}
+            <a class="pagination__link" href="?{% for k, v in request.GET.items %}{% if k != 'page' %}{{ k }}={{ v|urlencode }}&{% endif %}{% endfor %}page={{ page_obj.previous_page_number }}">← {% trans "Précédent" %}</a>
+        {% else %}
+            <span class="pagination__link pagination__link--off">← {% trans "Précédent" %}</span>
+        {% endif %}
+
+        <span class="pagination__info">
+            {% blocktrans with num=page_obj.number total=page_obj.paginator.num_pages %}Page {{ num }} / {{ total }}{% endblocktrans %}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="pagination__link" href="?{% for k, v in request.GET.items %}{% if k != 'page' %}{{ k }}={{ v|urlencode }}&{% endif %}{% endfor %}page={{ page_obj.next_page_number }}">{% trans "Suivant" %} →</a>
+        {% else %}
+            <span class="pagination__link pagination__link--off">{% trans "Suivant" %} →</span>
+        {% endif %}
+    </nav>
+{% endif %}

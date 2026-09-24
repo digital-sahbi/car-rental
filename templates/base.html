@@ -1,0 +1,136 @@
+{% load static i18n %}<!DOCTYPE html>
+<html lang="{{ current_language|default:'fr' }}" dir="{% if is_rtl %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% trans "Tableau de bord" %}{% endblock %}{% if company %} — {{ company.company_name }}{% endif %}</title>
+    <link rel="stylesheet" href="{% static 'css/crm.css' %}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+{% if user.is_authenticated %}
+<header class="topbar">
+    <div class="topbar__brand">
+        {% if company and company.logo %}
+            <img src="{{ company.logo.url }}" alt="{{ company.company_name }}" class="topbar__logo">
+        {% endif %}
+        <span class="topbar__name">{{ company.company_name|default:"Smart Rent Car" }}</span>
+        <span class="topbar__tag">{% trans "CRM interne" %}</span>
+    </div>
+
+    <button type="button" class="topbar__burger" data-toggle-nav aria-label="{% trans 'Menu' %}">☰</button>
+
+    <div class="topbar__right">
+        <form action="{% url 'set_language' %}" method="post" class="lang-switch">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.get_full_path }}">
+            <select name="language" onchange="this.form.submit()" aria-label="{% trans 'Langue' %}">
+                {% for code, label in available_languages %}
+                    <option value="{{ code }}" {% if code == current_language %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </form>
+
+<div class="notif"
+                 data-notif
+                 data-notif-seen-url="{% url 'core:notifications_seen' %}"
+                 data-csrf="{{ csrf_token }}">
+                <button type="button" class="notif__bell" data-notif-toggle
+                        aria-label="{% trans 'Notifications' %}" aria-expanded="false">
+                    <span aria-hidden="true">🔔</span>
+                    <span class="notif__badge" data-notif-badge
+                          {% if not unread_notifications %}hidden{% endif %}>{{ unread_notifications|default:0 }}</span>
+                </button>
+
+                <div class="notif__panel" data-notif-panel hidden>
+                    <div class="notif__head">
+                        <strong>{% trans "Notifications" %}</strong>
+                        <a href="{{ history_url }}">{% trans "Tout l'historique" %}</a>
+                    </div>
+                    <ul class="notif__list">
+                        {% for item in latest_notifications %}
+                            <li class="notif__item notif__item--{{ item.kind }}">
+                                <a href="{{ item.url }}">
+                                    <span class="notif__title">{{ item.title }}</span>
+                                    <span class="notif__detail">{{ item.detail }}</span>
+                                    <span class="notif__time">{{ item.timestamp|date:"d/m H:i" }}</span>
+                                </a>
+                            </li>
+                        {% empty %}
+                            <li class="notif__empty">{% trans "Aucune notification." %}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <span class="topbar__user">
+            {{ user.get_full_name|default:user.email }}
+            <small>{{ user.get_role_display }}</small>
+        </span>
+
+        <form action="{% url 'accounts:logout' %}" method="post" class="inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn--ghost btn--sm">{% trans "Déconnexion" %}</button>
+        </form>
+    </div>
+</header>
+
+<div class="layout" data-layout>
+    <aside class="sidebar" data-sidebar>
+        <nav>
+            <a href="{% url 'core:dashboard' %}">{% trans "Tableau de bord" %}</a>
+            <a href="{% url 'bookings:booking_list' %}">{% trans "Réservations" %}</a>
+            <a href="{% url 'bookings:booking_add' %}" class="sidebar__cta">+ {% trans "Nouvelle réservation" %}</a>
+            <a href="{% url 'vehicles:car_list' %}">{% trans "Véhicules" %}</a>
+            <a href="{% url 'clients:client_list' %}">{% trans "Clients" %}</a>
+            <a href="{% url 'invoicing:invoice_list' %}">{% trans "Factures" %}</a>
+            <a href="{% url 'vehicles:maintenance_list' %}">{% trans "Maintenance" %}</a>
+                {% if not user.is_admin %}
+                    <a href="{{ history_url }}">{% trans "Historique" %}</a>
+                {% endif %}
+            {% if user.role == "MANAGER" or user.role == "ADMIN" %}
+                <span class="sidebar__section">{% trans "Gestion" %}</span>
+                <a href="{% url 'bookings:edit_request_list' %}">{% trans "Demandes de modification" %}</a>
+            {% endif %}
+
+            {% if user.role == "ADMIN" %}
+                <a href="{% url 'accounts:employee_list' %}">{% trans "Employés" %}</a>
+                <a href="{% url 'core:promotion_list' %}">{% trans "Promotions" %}</a>
+                <a href="{% url 'core:settings' %}">{% trans "Paramètres entreprise" %}</a>
+                <a href="{% url 'core:audit_log' %}">{% trans "Journal d'audit" %}</a>
+            {% endif %}
+
+            {% if user.is_staff %}
+                <span class="sidebar__section">{% trans "Système" %}</span>
+                <a href="{% url 'admin:index' %}">{% trans "Administration Django" %}</a>
+            {% endif %}
+        </nav>
+    </aside>
+
+    <main class="content">
+{% else %}
+<main class="auth">
+{% endif %}
+
+        {% include "partials/messages.html" %}
+        {% block content %}{% endblock %}
+
+{% if user.is_authenticated %}
+    </main>
+</div>
+{% else %}
+    <footer class="auth__footer">
+        {% for code, label in available_languages %}
+            <form action="{% url 'set_language' %}" method="post" class="inline">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                <button name="language" value="{{ code }}" class="btn btn--link btn--sm">{{ label }}</button>
+            </form>
+        {% endfor %}
+    </footer>
+</main>
+{% endif %}
+<script src="{% static 'js/crm.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

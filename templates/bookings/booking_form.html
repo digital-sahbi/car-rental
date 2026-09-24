@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% if is_edit %}{% trans "Modifier la réservation" %}{% else %}{% trans "Nouvelle réservation" %}{% endif %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% if is_edit %}{% trans "Modifier la réservation" %} #{{ booking.pk }}{% else %}{% trans "Nouvelle réservation" %}{% endif %}</h1>
+    <div class="page-head__actions">
+        <a class="btn btn--ghost" href="{% url 'bookings:booking_list' %}">{% trans "Retour" %}</a>
+    </div>
+</div>
+
+<form method="post" novalidate>
+    {% csrf_token %}
+
+    <div class="card">
+        <h2>{% trans "Véhicule et client" %}</h2>
+        <div class="grid grid--2">
+            <div class="field {% if form.car.errors %}field--error{% endif %}">
+                <label for="{{ form.car.id_for_label }}">{% trans "Véhicule" %} <span class="req">*</span></label>
+                <select id="{{ form.car.id_for_label }}" name="car" data-price-source required>
+                    <option value="">{% trans "— Choisir un véhicule —" %}</option>
+                    {% for car in form.fields.car.queryset %}
+                        <option value="{{ car.pk }}" data-price="{{ car.price_per_day }}"
+                            {% if form.car.value|stringformat:"s" == car.pk|stringformat:"s" %}selected{% endif %}>
+                            {{ car.plate_number }} — {{ car.full_name }} ({{ car.price_per_day }} MAD/j)
+                        </option>
+                    {% endfor %}
+                </select>
+                {% for error in form.car.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
+            </div>
+
+            <div class="field {% if form.client.errors %}field--error{% endif %}">
+                <label for="{{ form.client.id_for_label }}">{% trans "Client" %} <span class="req">*</span></label>
+                {{ form.client }}
+                {% for error in form.client.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
+                <p class="field__help">
+                    <a href="{% url 'clients:client_add' %}?next={{ request.get_full_path|urlencode }}">+ {% trans "Créer un client" %}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Période" %}</h2>
+        <div class="grid grid--2">
+            <div class="field {% if form.start_date.errors %}field--error{% endif %}">
+                <label for="{{ form.start_date.id_for_label }}">{% trans "Date de départ" %} <span class="req">*</span></label>
+                {{ form.start_date }}
+                {% for error in form.start_date.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
+            </div>
+            <div class="field {% if form.end_date.errors %}field--error{% endif %}">
+                <label for="{{ form.end_date.id_for_label }}">{% trans "Date de retour" %} <span class="req">*</span></label>
+                {{ form.end_date }}
+                {% for error in form.end_date.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
+            </div>
+        </div>
+        <p class="muted">
+            {% trans "Estimation :" %} <strong data-price-preview>—</strong>
+            <small>{% trans "Le prix définitif est calculé par le serveur à l'enregistrement." %}</small>
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Conditions" %}</h2>
+        <div class="grid grid--2">
+            <div class="field">{{ form.status.label_tag }}{{ form.status }}{% for e in form.status.errors %}<p class="field__error">{{ e }}</p>{% endfor %}</div>
+            <div class="field">{{ form.pickup_location.label_tag }}{{ form.pickup_location }}{% for e in form.pickup_location.errors %}<p class="field__error">{{ e }}</p>{% endfor %}</div>
+            <div class="field">{{ form.return_location.label_tag }}{{ form.return_location }}{% for e in form.return_location.errors %}<p class="field__error">{{ e }}</p>{% endfor %}</div>
+            <div class="field">{{ form.fuel_policy.label_tag }}{{ form.fuel_policy }}</div>
+            <div class="field">{{ form.mileage_policy.label_tag }}{{ form.mileage_policy }}</div>
+            <div class="field">{{ form.mileage_limit.label_tag }}{{ form.mileage_limit }}{% for e in form.mileage_limit.errors %}<p class="field__error">{{ e }}</p>{% endfor %}</div>
+        </div>
+        <div class="field">{{ form.notes.label_tag }}{{ form.notes }}</div>
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Options (extras)" %}</h2>
+        {{ option_formset.management_form }}
+        <div class="table-wrap">
+            <table class="data">
+                <thead>
+                    <tr>
+                        <th>{% trans "Option" %}</th>
+                        <th>{% trans "Prix unitaire" %}</th>
+                        <th>{% trans "Quantité" %}</th>
+                        <th>{% trans "Supprimer" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for subform in option_formset %}
+                        <tr>
+                            {% for hidden in subform.hidden_fields %}{{ hidden }}{% endfor %}
+                            <td>{{ subform.option_type }}</td>
+                            <td>{{ subform.price }}</td>
+                            <td>{{ subform.quantity }}</td>
+                            <td>{% if subform.instance.pk %}{{ subform.DELETE }}{% else %}<span class="muted">—</span>{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button class="btn" type="submit">{% trans "Enregistrer" %}</button>
+</form>
+{% endblock %}

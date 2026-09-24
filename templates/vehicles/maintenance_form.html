@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Nouvelle intervention" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Nouvelle intervention de maintenance" %}</h1>
+    <div class="page-head__actions">
+        <a class="btn btn--ghost" href="{% url 'vehicles:maintenance_list' %}">{% trans "Retour" %}</a>
+    </div>
+</div>
+
+<div class="card">
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {% include "partials/form_fields.html" %}
+        <button class="btn" type="submit">{% trans "Enregistrer" %}</button>
+    </form>
+</div>
+{% endblock %}

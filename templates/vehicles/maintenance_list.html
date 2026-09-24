@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Maintenance" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Maintenance" %}</h1>
+    <div class="page-head__actions">
+        <a class="btn" href="{% url 'vehicles:maintenance_add' %}">+ {% trans "Nouvelle intervention" %}</a>
+    </div>
+</div>
+
+<form method="get" class="filter-bar">
+    <div class="field">
+        <label for="car">{% trans "Véhicule" %}</label>
+        <select id="car" name="car">
+            <option value="">{% trans "Tous" %}</option>
+            {% for car in cars %}
+                <option value="{{ car.pk }}" {% if car_filter == car.pk|stringformat:"s" %}selected{% endif %}>
+                    {{ car.plate_number }} — {{ car.full_name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn--ghost" type="submit">{% trans "Filtrer" %}</button>
+</form>
+
+<div class="card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>{% trans "Date" %}</th>
+                    <th>{% trans "Véhicule" %}</th>
+                    <th>{% trans "Description" %}</th>
+                    <th class="num">{% trans "Coût" %}</th>
+                    <th class="num">{% trans "Km" %}</th>
+                    <th>{% trans "Prochain service" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for maintenance in maintenances %}
+                    <tr>
+                        <td class="nowrap">{{ maintenance.date|date:"d/m/Y" }}</td>
+                        <td><a href="{% url 'vehicles:car_detail' maintenance.car.pk %}">{{ maintenance.car.plate_number }}</a></td>
+                        <td>{{ maintenance.description|truncatechars:80 }}</td>
+                        <td class="num">{{ maintenance.cost|floatformat:2 }}</td>
+                        <td class="num">{{ maintenance.mileage_at_service|default:"—" }}</td>
+                        <td class="nowrap">{{ maintenance.next_service_date|date:"d/m/Y"|default:"—" }}</td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="6" class="empty">{% trans "Aucune intervention." %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "partials/pagination.html" %}
+{% endblock %}

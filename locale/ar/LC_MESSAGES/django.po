@@ -1,0 +1,1490 @@
+# Arabic translation for the Smart Rent Car CRM.
+# Generated from tools/extract_messages.py + manual translation (MSA).
+# Compile with: python tools/compile_messages.py
+msgid ""
+msgstr ""
+"Project-Id-Version: Smart Rent Car CRM\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-23 10:00+0000\n"
+"PO-Revision-Date: 2026-09-23 10:00+0000\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+
+msgid "#%(id)s %(client)s — %(requester)s"
+msgstr "#%(id)s %(client)s — %(requester)s"
+
+msgid "Accès réservé au personnel."
+msgstr "الدخول مخصص للموظفين فقط."
+
+msgid "Actif"
+msgstr "نشط"
+
+msgid "Action"
+msgstr "الإجراء"
+
+msgid "Actions concernant vos réservations."
+msgstr "الإجراءات المتعلقة بحجوزاتك."
+
+msgid "Administrateur"
+msgstr "مدير"
+
+msgid "Administration Django"
+msgstr "إدارة Django"
+
+msgid "Adresse"
+msgstr "العنوان"
+
+msgid "Ajouter une intervention"
+msgstr "إضافة صيانة"
+
+msgid "Allemagne"
+msgstr "ألمانيا"
+
+msgid "Annuler"
+msgstr "إلغاء"
+
+msgid "Annulée"
+msgstr "ملغاة"
+
+msgid "Année"
+msgstr "السنة"
+
+msgid "Année invalide : attendu entre 1990 et %(max)s."
+msgstr "سنة غير صالحة: يجب أن تكون بين 1990 و%(max)s."
+
+msgid "Approbation"
+msgstr "موافقة"
+
+msgid "Approuver"
+msgstr "موافقة"
+
+msgid "Approuvée"
+msgstr "موافق عليها"
+
+msgid "Archiver"
+msgstr "أرشفة"
+
+msgid "Archiver ce client ?"
+msgstr "أرشفة هذا العميل؟"
+
+msgid "Archiver ce véhicule ?"
+msgstr "أرشفة هذه المركبة؟"
+
+msgid "Archiver cette réservation ?"
+msgstr "أرشفة هذا الحجز؟"
+
+msgid "Archiver la réservation"
+msgstr "أرشفة الحجز"
+
+msgid "Archiver le client"
+msgstr "أرشفة العميل"
+
+msgid "Archiver le véhicule"
+msgstr "أرشفة المركبة"
+
+msgid "Assurance partielle"
+msgstr "تأمين جزئي"
+
+msgid "Assurance tous risques"
+msgstr "تأمين شامل"
+
+msgid "Aucun client."
+msgstr "لا يوجد عملاء."
+
+msgid "Aucun départ aujourd'hui."
+msgstr "لا مغادرات اليوم."
+
+msgid "Aucun employé."
+msgstr "لا يوجد موظفون."
+
+msgid "Aucun véhicule."
+msgstr "لا توجد مركبات."
+
+msgid "Aucune action enregistrée."
+msgstr "لا توجد إجراءات مسجلة."
+
+msgid "Aucune demande."
+msgstr "لا توجد طلبات."
+
+msgid "Aucune entrée."
+msgstr "لا توجد سجلات."
+
+msgid "Aucune facture."
+msgstr "لا توجد فواتير."
+
+msgid "Aucune intervention."
+msgstr "لا توجد عمليات صيانة."
+
+msgid "Aucune notification."
+msgstr "لا توجد إشعارات."
+
+msgid "Aucune photo."
+msgstr "لا توجد صور."
+
+msgid "Aucune promotion."
+msgstr "لا توجد خصومات."
+
+msgid "Aucune réservation."
+msgstr "لا توجد حجوزات."
+
+msgid "Automatique"
+msgstr "أوتوماتيكي"
+
+msgid "Autre"
+msgstr "أخرى"
+
+msgid "Aéroport Marrakech, Centre-ville, Hôtel…"
+msgstr "مطار مراكش، وسط المدينة، فندق…"
+
+msgid "Aéroport Marrakech-Menara"
+msgstr "مطار مراكش المنارة"
+
+msgid "Belgique"
+msgstr "بلجيكا"
+
+msgid "Boîte"
+msgstr "ناقل الحركة"
+
+msgid "CIN"
+msgstr "البطاقة الوطنية"
+
+msgid "CIN / Passeport"
+msgstr "البطاقة الوطنية / جواز السفر"
+
+msgid "CIN pour les clients marocains, passeport sinon."
+msgstr "البطاقة الوطنية للعملاء المغاربة، وجواز السفر لغيرهم."
+
+msgid "CRM interne"
+msgstr "نظام إدارة داخلي"
+
+msgid "Canada"
+msgstr "كندا"
+
+msgid "Carburant"
+msgstr "الوقود"
+
+msgid "Carburant / Boîte"
+msgstr "الوقود / ناقل الحركة"
+
+msgid "Carte d'Identité Nationale (identifiant unique)."
+msgstr "البطاقة الوطنية للتعريف (معرّف فريد)."
+
+msgid "Catégorie"
+msgstr "الفئة"
+
+msgid "Ce véhicule est déjà réservé du %(from)s au %(to)s (réservation #%(id)s)."
+msgstr "هذه المركبة محجوزة مسبقًا من %(from)s إلى %(to)s (الحجز رقم %(id)s)."
+
+msgid "Ces informations apparaissent sur les factures."
+msgstr "تظهر هذه المعلومات في الفواتير."
+
+msgid "Cette demande a déjà été traitée."
+msgstr "تمت معالجة هذا الطلب مسبقًا."
+
+msgid "Cette réservation a déjà une facture."
+msgstr "هذا الحجز له فاتورة مسبقًا."
+
+msgid "Changer l'état"
+msgstr "تغيير الحالة"
+
+msgid "Changer le statut"
+msgstr "تغيير الوضع"
+
+msgid "Chiffre du mois"
+msgstr "رقم المعاملات الشهري"
+
+msgid "Client"
+msgstr "العميل"
+
+msgid "Client (A → Z)"
+msgstr "العميل (أ → ي)"
+
+msgid "Client archivé."
+msgstr "تمت أرشفة العميل."
+
+msgid "Client créé."
+msgstr "تم إنشاء العميل."
+
+msgid "Client enregistré."
+msgstr "تم حفظ العميل."
+
+msgid "Client, immatriculation, lieu…"
+msgstr "العميل، رقم التسجيل، المكان…"
+
+msgid "Clients"
+msgstr "العملاء"
+
+msgid "Coche pour faire de cette photo la photo principale (remplace la photo principale du véhicule)."
+msgstr "حدّد لجعل هذه الصورة الصورة الرئيسية (تحل محل الصورة الرئيسية للمركبة)."
+
+msgid "Code"
+msgstr "الرمز"
+
+msgid "Code promotion (optionnel)"
+msgstr "رمز الخصم (اختياري)"
+
+msgid "Code promotion inconnu."
+msgstr "رمز الخصم غير معروف."
+
+msgid "Code, description…"
+msgstr "الرمز، الوصف…"
+
+msgid "Commentaire"
+msgstr "ملاحظة"
+
+msgid "Compacte"
+msgstr "مدمجة"
+
+msgid "Conditions"
+msgstr "الشروط"
+
+msgid "Conducteur additionnel"
+msgstr "سائق إضافي"
+
+msgid "Confirmer l'archivage"
+msgstr "تأكيد الأرشفة"
+
+msgid "Confirmer le changement de statut ?"
+msgstr "تأكيد تغيير الوضع؟"
+
+msgid "Confirmée"
+msgstr "مؤكدة"
+
+msgid "Connexion"
+msgstr "تسجيل الدخول"
+
+msgid "Contacter sur WhatsApp"
+msgstr "التواصل عبر واتساب"
+
+msgid "Coordonnées"
+msgstr "بيانات الاتصال"
+
+msgid "Coordonnées bancaires"
+msgstr "المعلومات البنكية"
+
+msgid "Coût"
+msgstr "التكلفة"
+
+msgid "Création"
+msgstr "إنشاء"
+
+msgid "Créer un client"
+msgstr "إضافة عميل"
+
+msgid "Date"
+msgstr "التاريخ"
+
+msgid "Date de départ"
+msgstr "تاريخ الانطلاق"
+
+msgid "Date de retour"
+msgstr "تاريخ الإرجاع"
+
+msgid "Dates et lieux"
+msgstr "التواريخ والأماكن"
+
+msgid "Demande #%(id)s · %(booking)s"
+msgstr "الطلب رقم %(id)s · %(booking)s"
+
+msgid "Demande approuvée."
+msgstr "تمت الموافقة على الطلب."
+
+msgid "Demande de modification à valider"
+msgstr "طلب تعديل بحاجة إلى موافقة"
+
+msgid "Demande envoyée pour approbation."
+msgstr "تم إرسال الطلب للموافقة."
+
+msgid "Demande rejetée."
+msgstr "تم رفض الطلب."
+
+msgid "Demander une modification"
+msgstr "طلب تعديل"
+
+msgid "Demandes de modification"
+msgstr "طلبات التعديل"
+
+msgid "Demandes en attente"
+msgstr "طلبات قيد الانتظار"
+
+msgid "Demandeur"
+msgstr "مقدّم الطلب"
+
+msgid "Dernière ouverture du panneau de notifications (badge)."
+msgstr "آخر فتح للوحة الإشعارات (الشارة)."
+
+msgid "Dernières réservations"
+msgstr "آخر الحجوزات"
+
+msgid "Description"
+msgstr "الوصف"
+
+msgid "Devient l'image principale du véhicule. Si une photo de la galerie était marquée « principale », elle ne le sera plus."
+msgstr "تصبح الصورة الرئيسية للمركبة. إذا كانت صورة في المعرض محدّدة كرئيسية، فستفقد هذه الصفة."
+
+msgid "Diesel"
+msgstr "ديزل"
+
+msgid "Disponible"
+msgstr "متاحة"
+
+msgid "Document"
+msgstr "الوثيقة"
+
+msgid "Déconnexion"
+msgstr "تسجيل الخروج"
+
+msgid "Départ"
+msgstr "الانطلاق"
+
+msgid "Départ le plus lointain"
+msgstr "الأبعد انطلاقًا"
+
+msgid "Départ le plus proche"
+msgstr "الأقرب انطلاقًا"
+
+msgid "Départs aujourd'hui"
+msgstr "مغادرات اليوم"
+
+msgid "Désactiver"
+msgstr "تعطيل"
+
+msgid "Désignation"
+msgstr "البيان"
+
+msgid "Détail"
+msgstr "التفاصيل"
+
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+msgid "Employé"
+msgstr "موظف"
+
+msgid "Employé ayant enregistré la réservation."
+msgstr "الموظف الذي سجّل الحجز."
+
+msgid "Employés"
+msgstr "الموظفون"
+
+msgid "En attente"
+msgstr "قيد الانتظار"
+
+msgid "En cours"
+msgstr "جارية"
+
+msgid "En maintenance"
+msgstr "في الصيانة"
+
+msgid "Enregistrement effectué."
+msgstr "تم الحفظ."
+
+msgid "Enregistrer"
+msgstr "حفظ"
+
+msgid "Envoyer la demande"
+msgstr "إرسال الطلب"
+
+msgid "Espagne"
+msgstr "إسبانيا"
+
+msgid "Essence"
+msgstr "بنزين"
+
+msgid "Estimation :"
+msgstr "التقدير:"
+
+msgid "Export CSV"
+msgstr "تصدير CSV"
+
+msgid "Export Excel"
+msgstr "تصدير Excel"
+
+msgid "FACTURE"
+msgstr "فاتورة"
+
+msgid "Facture"
+msgstr "الفاتورة"
+
+msgid "Facture %(number)s émise."
+msgstr "تم إصدار الفاتورة %(number)s."
+
+msgid "Facture émise électroniquement — document immuable."
+msgstr "فاتورة صادرة إلكترونيًا — وثيقة غير قابلة للتعديل."
+
+msgid "Factures"
+msgstr "الفواتير"
+
+msgid "Familiale"
+msgstr "عائلية"
+
+msgid "Fermer"
+msgstr "إغلاق"
+
+msgid "Fiche technique"
+msgstr "المواصفات التقنية"
+
+msgid "Filtre actif : vous voyez uniquement vos réservations."
+msgstr "المرشّح مُفعّل: تعرض حجوزاتك فقط."
+
+msgid "Filtrer"
+msgstr "تصفية"
+
+msgid "Filtres avancés"
+msgstr "مرشّحات متقدمة"
+
+msgid "Formulaire invalide."
+msgstr "النموذج غير صالح."
+
+msgid "France"
+msgstr "فرنسا"
+
+msgid "GPS"
+msgstr "نظام تحديد المواقع"
+
+msgid "Galerie photos"
+msgstr "معرض الصور"
+
+msgid "Gestion"
+msgstr "الإدارة"
+
+msgid "Historique"
+msgstr "السجل"
+
+msgid "Historique complet et immuable des actions."
+msgstr "سجل كامل وغير قابل للتعديل للإجراءات."
+
+msgid "Historique des actions"
+msgstr "سجل الإجراءات"
+
+msgid "Historique des réservations"
+msgstr "سجل الحجوزات"
+
+msgid "Horodatage"
+msgstr "الطابع الزمني"
+
+msgid "Hors période"
+msgstr "خارج المدة"
+
+msgid "Hors service"
+msgstr "خارج الخدمة"
+
+msgid "Hybride"
+msgstr "هجين"
+
+msgid "ICE"
+msgstr "المعرّف المشترك للمقاولة (ICE)"
+
+msgid "ID objet"
+msgstr "معرّف العنصر"
+
+msgid "IF"
+msgstr "المعرّف الضريبي (IF)"
+
+msgid "IP"
+msgstr "عنوان IP"
+
+msgid "Identifiant Commun de l'Entreprise"
+msgstr "المعرّف المشترك للمقاولة"
+
+msgid "Identifiant Fiscal"
+msgstr "المعرّف الضريبي"
+
+msgid "Identité"
+msgstr "الهوية"
+
+msgid "Image"
+msgstr "الصورة"
+
+msgid "Immatriculation"
+msgstr "رقم التسجيل"
+
+msgid "Impression"
+msgstr "طباعة"
+
+msgid "Impressions"
+msgstr "عدد الطبعات"
+
+msgid "Imprimer"
+msgstr "طباعة"
+
+msgid "Imprimer (HTML)"
+msgstr "طباعة (HTML)"
+
+msgid "Inactif"
+msgstr "غير نشط"
+
+msgid "Indiquez la limite de kilométrage."
+msgstr "يرجى تحديد حد الكيلومترات."
+
+msgid "Informations"
+msgstr "المعلومات"
+
+msgid "Instantané des champs à modifier : {champ: nouvelle valeur}."
+msgstr "لقطة للحقول المطلوب تعديلها: {حقل: القيمة الجديدة}."
+
+msgid "International"
+msgstr "دولي"
+
+msgid "Italie"
+msgstr "إيطاليا"
+
+msgid "Journal complet du CRM."
+msgstr "السجل الكامل للنظام."
+
+msgid "Journal d'audit"
+msgstr "سجل التتبع"
+
+msgid "Jours"
+msgstr "الأيام"
+
+msgid "Jours facturés"
+msgstr "الأيام المحتسبة"
+
+msgid "Kilométrage"
+msgstr "عدد الكيلومترات"
+
+msgid "Kilométrage illimité"
+msgstr "كيلومترات غير محدودة"
+
+msgid "Kilométrage limité"
+msgstr "كيلومترات محدودة"
+
+msgid "Km"
+msgstr "كم"
+
+msgid "La date de fin doit suivre la date de début."
+msgstr "يجب أن يكون تاريخ النهاية بعد تاريخ البداية."
+
+msgid "La date de retour doit être postérieure au départ."
+msgstr "يجب أن يكون تاريخ الإرجاع بعد الانطلاق."
+
+msgid "La date de retour doit être postérieure à la date de départ."
+msgstr "يجب أن يكون تاريخ الإرجاع بعد تاريخ الانطلاق."
+
+msgid "La promotion « %(code)s » n'est pas valide aujourd'hui."
+msgstr "الخصم «%(code)s» غير صالح اليوم."
+
+msgid "La remise ne peut dépasser le sous-total."
+msgstr "لا يمكن أن يتجاوز الخصم المجموع الفرعي."
+
+msgid "La réservation #{{ id }} sera archivée (suppression logique)."
+msgstr "سيتم أرشفة الحجز رقم {{ id }} (حذف منطقي)."
+
+msgid "Langue"
+msgstr "اللغة"
+
+msgid "Le client « {{ name }} » sera archivé (suppression logique). Son historique de réservations et de factures reste consultable."
+msgstr "سيتم أرشفة العميل «{{ name }}» (حذف منطقي). يبقى سجل حجوزاته وفواتيره متاحًا للاطلاع."
+
+msgid "Le journal d'audit est immuable."
+msgstr "سجل التتبع غير قابل للتعديل."
+
+msgid "Le montant de la réservation est nul."
+msgstr "مبلغ الحجز صفر."
+
+msgid "Le motif est obligatoire."
+msgstr "السبب إلزامي."
+
+msgid "Le prix définitif est calculé par le serveur à l'enregistrement."
+msgstr "يُحتسب السعر النهائي من الخادم عند الحفظ."
+
+msgid "Le prochain service doit suivre la date d'intervention."
+msgstr "يجب أن يكون موعد الصيانة القادم بعد تاريخ التدخل."
+
+msgid "Le véhicule « {{ car }} » sera archivé (suppression logique). Son historique de réservations reste consultable."
+msgstr "سيتم أرشفة المركبة «{{ car }}» (حذف منطقي). يبقى سجل حجوزاتها متاحًا للاطلاع."
+
+msgid "Les réservations affichées ci-dessous sont uniquement les vôtres. Les statistiques du parc restent globales."
+msgstr "الحجوزات المعروضة أدناه تخصك وحدك. تبقى إحصائيات الأسطول عامة."
+
+msgid "Lieu de prise en charge"
+msgstr "مكان الاستلام"
+
+msgid "Lieu de restitution"
+msgstr "مكان الإرجاع"
+
+msgid "Limite (km)"
+msgstr "الحد (كم)"
+
+msgid "Livraison / reprise"
+msgstr "التوصيل / الاستلام"
+
+msgid "Location"
+msgstr "الكراء"
+
+msgid "Location de véhicule"
+msgstr "كراء مركبة"
+
+msgid "Loué"
+msgstr "مكراة"
+
+msgid "Luxe"
+msgstr "فاخرة"
+
+msgid "Maintenance"
+msgstr "الصيانة"
+
+msgid "Maintenance enregistrée."
+msgstr "تم حفظ الصيانة."
+
+msgid "Manuelle"
+msgstr "يدوي"
+
+msgid "Maroc"
+msgstr "المغرب"
+
+msgid "Marque, modèle, immatriculation…"
+msgstr "الماركة، الطراز، رقم التسجيل…"
+
+msgid "Menu"
+msgstr "القائمة"
+
+msgid "Mes réservations"
+msgstr "حجوزاتي"
+
+msgid "Mettre à jour"
+msgstr "تحديث"
+
+msgid "Minibus"
+msgstr "حافلة صغيرة"
+
+msgid "Modification"
+msgstr "تعديل"
+
+msgid "Modifications"
+msgstr "التعديلات"
+
+msgid "Modifier"
+msgstr "تعديل"
+
+msgid "Modifier la promotion"
+msgstr "تعديل الخصم"
+
+msgid "Modifier la réservation"
+msgstr "تعديل الحجز"
+
+msgid "Modifier le client"
+msgstr "تعديل العميل"
+
+msgid "Modifier le véhicule"
+msgstr "تعديل المركبة"
+
+msgid "Modifier un employé"
+msgstr "تعديل موظف"
+
+msgid "Modifier un véhicule"
+msgstr "تعديل مركبة"
+
+msgid "Modèle"
+msgstr "الطراز"
+
+msgid "Montant"
+msgstr "المبلغ"
+
+msgid "Montant fixe"
+msgstr "مبلغ ثابت"
+
+msgid "Montants"
+msgstr "المبالغ"
+
+msgid "Mot de passe"
+msgstr "كلمة المرور"
+
+msgid "Motif"
+msgstr "السبب"
+
+msgid "Même niveau"
+msgstr "نفس المستوى"
+
+msgid "NET À PAYER"
+msgstr "الصافي للدفع"
+
+msgid "Net HT"
+msgstr "الصافي بدون ضريبة"
+
+msgid "Net à payer"
+msgstr "الصافي للدفع"
+
+msgid "Nom"
+msgstr "الاسم"
+
+msgid "Nom, email, CIN…"
+msgstr "الاسم، البريد الإلكتروني، البطاقة الوطنية…"
+
+msgid "Nom, téléphone, document, pays…"
+msgstr "الاسم، الهاتف، الوثيقة، البلد…"
+
+msgid "Notes"
+msgstr "ملاحظات"
+
+msgid "Notifications"
+msgstr "الإشعارات"
+
+msgid "Nouveau client"
+msgstr "عميل جديد"
+
+msgid "Nouveau véhicule"
+msgstr "مركبة جديدة"
+
+msgid "Nouvel employé"
+msgstr "موظف جديد"
+
+msgid "Nouvelle date de départ"
+msgstr "تاريخ انطلاق جديد"
+
+msgid "Nouvelle date de retour"
+msgstr "تاريخ إرجاع جديد"
+
+msgid "Nouvelle intervention"
+msgstr "صيانة جديدة"
+
+msgid "Nouvelle intervention de maintenance"
+msgstr "عملية صيانة جديدة"
+
+msgid "Nouvelle promotion"
+msgstr "خصم جديد"
+
+msgid "Nouvelle réservation"
+msgstr "حجز جديد"
+
+msgid "Null pour les actions système."
+msgstr "فارغ للإجراءات الآلية."
+
+msgid "Numéro"
+msgstr "الرقم"
+
+msgid "Numéro, client, immatriculation…"
+msgstr "الرقم، العميل، رقم التسجيل…"
+
+msgid "N°"
+msgstr "رقم"
+
+msgid "Objet"
+msgstr "العنصر"
+
+msgid "Objet, utilisateur…"
+msgstr "العنصر، المستخدم…"
+
+msgid "Option"
+msgstr "خيار"
+
+msgid "Options (extras)"
+msgstr "الخيارات (إضافات)"
+
+msgid "Page {{ num }} / {{ total }}"
+msgstr "الصفحة {{ num }} / {{ total }}"
+
+msgid "Pagination"
+msgstr "ترقيم الصفحات"
+
+msgid "Paramètres de l'entreprise"
+msgstr "إعدادات الشركة"
+
+msgid "Paramètres de l'entreprise enregistrés."
+msgstr "تم حفظ إعدادات الشركة."
+
+msgid "Paramètres entreprise"
+msgstr "إعدادات الشركة"
+
+msgid "Parc automobile"
+msgstr "أسطول المركبات"
+
+msgid "Parc par catégorie"
+msgstr "الأسطول حسب الفئة"
+
+msgid "Parc par état"
+msgstr "الأسطول حسب الحالة"
+
+msgid "Parc total"
+msgstr "إجمالي الأسطول"
+
+msgid "Parc vide."
+msgstr "الأسطول فارغ."
+
+msgid "Pays"
+msgstr "البلد"
+
+msgid "Pays-Bas"
+msgstr "هولندا"
+
+msgid "Photos"
+msgstr "الصور"
+
+msgid "Photos invalides."
+msgstr "صور غير صالحة."
+
+msgid "Places"
+msgstr "المقاعد"
+
+msgid "Plein / Plein"
+msgstr "ممتلئ / ممتلئ"
+
+msgid "Plein / Vide"
+msgstr "ممتلئ / فارغ"
+
+msgid "Plus récentes d'abord"
+msgstr "الأحدث أولاً"
+
+msgid "Pourcentage"
+msgstr "نسبة مئوية"
+
+msgid "Principale"
+msgstr "رئيسية"
+
+msgid "Prise en charge"
+msgstr "الاستلام"
+
+msgid "Prix / jour"
+msgstr "السعر / اليوم"
+
+msgid "Prix unitaire"
+msgstr "سعر الوحدة"
+
+msgid "Prochain service"
+msgstr "الصيانة القادمة"
+
+msgid "Promotion créée."
+msgstr "تم إنشاء الخصم."
+
+msgid "Promotion enregistrée."
+msgstr "تم حفظ الخصم."
+
+msgid "Promotions"
+msgstr "الخصومات"
+
+msgid "Précédent"
+msgstr "السابق"
+
+msgid "Période"
+msgstr "المدة"
+
+msgid "Qté"
+msgstr "الكمية"
+
+msgid "Quantité"
+msgstr "الكمية"
+
+msgid "RC"
+msgstr "السجل التجاري (RC)"
+
+msgid "Recherche"
+msgstr "البحث"
+
+msgid "Registre du Commerce"
+msgstr "السجل التجاري"
+
+msgid "Rejet"
+msgstr "رفض"
+
+msgid "Rejeter"
+msgstr "رفض"
+
+msgid "Rejetée"
+msgstr "مرفوض"
+
+msgid "Remise"
+msgstr "الخصم"
+
+msgid "Responsable"
+msgstr "مسؤول"
+
+msgid "Restitution"
+msgstr "الإرجاع"
+
+msgid "Retour"
+msgstr "الإرجاع"
+
+msgid "Retours aujourd'hui"
+msgstr "إرجاعات اليوم"
+
+msgid "Royaume-Uni"
+msgstr "المملكة المتحدة"
+
+msgid "Réactiver"
+msgstr "إعادة التفعيل"
+
+msgid "Réservation"
+msgstr "الحجز"
+
+msgid "Réservation %(action)s"
+msgstr "حجز %(action)s"
+
+msgid "Réservation archivée."
+msgstr "تمت أرشفة الحجز."
+
+msgid "Réservation créée."
+msgstr "تم إنشاء الحجز."
+
+msgid "Réservation enregistrée."
+msgstr "تم حفظ الحجز."
+
+msgid "Réservation introuvable."
+msgstr "الحجز غير موجود."
+
+msgid "Réservations"
+msgstr "الحجوزات"
+
+msgid "Réservations du jour"
+msgstr "حجوزات اليوم"
+
+msgid "Réserver"
+msgstr "حجز"
+
+msgid "Rôle"
+msgstr "الدور"
+
+msgid "SUV / 4x4"
+msgstr "سيارة رياضية / دفع رباعي"
+
+msgid "Se connecter"
+msgstr "تسجيل الدخول"
+
+msgid "Siège enfant"
+msgstr "مقعد أطفال"
+
+msgid "Sous-total"
+msgstr "المجموع الفرعي"
+
+msgid "Statut"
+msgstr "الوضع"
+
+msgid "Statut invalide."
+msgstr "وضع غير صالح."
+
+msgid "Statut mis à jour."
+msgstr "تم تحديث الوضع."
+
+msgid "Suivant"
+msgstr "التالي"
+
+msgid "Suppression"
+msgstr "حذف"
+
+msgid "Supprimer"
+msgstr "حذف"
+
+msgid "Système"
+msgstr "النظام"
+
+msgid "TVA"
+msgstr "الضريبة على القيمة المضافة"
+
+msgid "TVA (%)"
+msgstr "الضريبة (%)"
+
+msgid "TVA par défaut (%)"
+msgstr "الضريبة الافتراضية (%)"
+
+msgid "Tableau de bord"
+msgstr "لوحة التحكم"
+
+msgid "Terminée"
+msgstr "منتهية"
+
+msgid "Total"
+msgstr "المجموع"
+
+msgid "Total réservation"
+msgstr "مجموع الحجز"
+
+msgid "Tous"
+msgstr "الكل"
+
+msgid "Tous les rôles"
+msgstr "جميع الأدوار"
+
+msgid "Tous les statuts"
+msgstr "جميع الأوضاع"
+
+msgid "Tous les états"
+msgstr "جميع الحالات"
+
+msgid "Tout l'historique"
+msgstr "كل السجل"
+
+msgid "Toutes"
+msgstr "الكل"
+
+msgid "Toutes les actions"
+msgstr "جميع الإجراءات"
+
+msgid "Toutes les réservations"
+msgstr "جميع الحجوزات"
+
+msgid "Trier par"
+msgstr "الترتيب حسب"
+
+msgid "Tél"
+msgstr "الهاتف"
+
+msgid "Télécharger (PDF)"
+msgstr "تحميل (PDF)"
+
+msgid "Télécharger le PDF"
+msgstr "تحميل ملف PDF"
+
+msgid "Téléphone"
+msgstr "الهاتف"
+
+msgid "Un pourcentage ne peut dépasser 100."
+msgstr "لا يمكن أن تتجاوز النسبة 100."
+
+msgid "Une demande est déjà en attente pour cette réservation."
+msgstr "يوجد طلب قيد الانتظار لهذا الحجز."
+
+msgid "Une facture émise est immuable : créez un avoir au lieu de la modifier."
+msgstr "الفاتورة الصادرة غير قابلة للتعديل: أنشئ إشعارًا دائنًا بدلاً من تعديلها."
+
+msgid "Utilisateur"
+msgstr "المستخدم"
+
+msgid "Validité"
+msgstr "الصلاحية"
+
+msgid "Votre demande sera examinée par un responsable. Seuls les champs que vous remplissez seront proposés comme modifications."
+msgstr "سيُدرس طلبك من قبل مسؤول. الحقول التي تعبئها فقط ستُقترح كتعديلات."
+
+msgid "Votre rôle ne permet pas d'accéder à cette page."
+msgstr "دورك لا يسمح بالوصول إلى هذه الصفحة."
+
+msgid "Vous n'avez pas accès à cette réservation."
+msgstr "ليس لديك صلاحية الوصول إلى هذا الحجز."
+
+msgid "Vous voyez uniquement les réservations que vous avez enregistrées."
+msgstr "تعرض فقط الحجوزات التي سجّلتها بنفسك."
+
+msgid "Véhicule"
+msgstr "المركبة"
+
+msgid "Véhicule archivé."
+msgstr "تمت أرشفة المركبة."
+
+msgid "Véhicule créé."
+msgstr "تم إنشاء المركبة."
+
+msgid "Véhicule enregistré."
+msgstr "تم حفظ المركبة."
+
+msgid "Véhicule et client"
+msgstr "المركبة والعميل"
+
+msgid "Véhicule introuvable."
+msgstr "المركبة غير موجودة."
+
+msgid "Véhicules"
+msgstr "المركبات"
+
+msgid "Véhicules disponibles"
+msgstr "المركبات المتاحة"
+
+msgid "Véhicules en location"
+msgstr "المركبات المكراة"
+
+msgid "WhatsApp"
+msgstr "واتساب"
+
+msgid "actif"
+msgstr "نشط"
+
+msgid "action"
+msgstr "الإجراء"
+
+msgid "adresse"
+msgstr "العنوان"
+
+msgid "adresse IP"
+msgstr "عنوان IP"
+
+msgid "année"
+msgstr "السنة"
+
+msgid "année de séquence"
+msgstr "سنة التسلسل"
+
+msgid "approuvée"
+msgstr "موافق عليها"
+
+msgid "boîte"
+msgstr "ناقل الحركة"
+
+msgid "carburant"
+msgstr "الوقود"
+
+msgid "catégorie"
+msgstr "الفئة"
+
+msgid "catégorie de véhicule"
+msgstr "فئة المركبة"
+
+msgid "catégories de véhicules"
+msgstr "فئات المركبات"
+
+msgid "changements"
+msgstr "التغييرات"
+
+msgid "client"
+msgstr "العميل"
+
+msgid "client (instantané)"
+msgstr "العميل (لقطة)"
+
+msgid "clients"
+msgstr "العملاء"
+
+msgid "code"
+msgstr "الرمز"
+
+msgid "code promotion"
+msgstr "رمز الخصم"
+
+msgid "commentaire"
+msgstr "ملاحظة"
+
+msgid "commentaire de traitement"
+msgstr "ملاحظة المعالجة"
+
+msgid "compteur de factures"
+msgstr "عدّاد الفواتير"
+
+msgid "compteurs de factures"
+msgstr "عدّادات الفواتير"
+
+msgid "coordonnées bancaires"
+msgstr "المعلومات البنكية"
+
+msgid "coût"
+msgstr "التكلفة"
+
+msgid "créé le"
+msgstr "تاريخ الإنشاء"
+
+msgid "créé par"
+msgstr "أنشأه"
+
+msgid "créée"
+msgstr "منشأة"
+
+msgid "créée par"
+msgstr "أنشأها"
+
+msgid "date"
+msgstr "التاريخ"
+
+msgid "date de départ"
+msgstr "تاريخ الانطلاق"
+
+msgid "date de retour"
+msgstr "تاريخ الإرجاع"
+
+msgid "dates (instantané)"
+msgstr "التواريخ (لقطة)"
+
+msgid "demande de modification"
+msgstr "طلب تعديل"
+
+msgid "demandes de modification"
+msgstr "طلبات التعديل"
+
+msgid "demandeur"
+msgstr "مقدّم الطلب"
+
+msgid "dernier numéro"
+msgstr "آخر رقم"
+
+msgid "description"
+msgstr "الوصف"
+
+msgid "email"
+msgstr "البريد الإلكتروني"
+
+msgid "facture"
+msgstr "الفاتورة"
+
+msgid "factures"
+msgstr "الفواتير"
+
+msgid "fichier PDF"
+msgstr "ملف PDF"
+
+msgid "horodatage"
+msgstr "الطابع الزمني"
+
+msgid "image"
+msgstr "الصورة"
+
+msgid "image principale"
+msgstr "الصورة الرئيسية"
+
+msgid "immatriculation"
+msgstr "رقم التسجيل"
+
+msgid "imprimée"
+msgstr "مطبوعة"
+
+msgid "journal d'audit"
+msgstr "سجل التتبع"
+
+msgid "kilométrage"
+msgstr "عدد الكيلومترات"
+
+msgid "kilométrage au service"
+msgstr "الكيلومترات عند الصيانة"
+
+msgid "langue par défaut"
+msgstr "اللغة الافتراضية"
+
+msgid "lieu de prise en charge"
+msgstr "مكان الاستلام"
+
+msgid "lieu de restitution"
+msgstr "مكان الإرجاع"
+
+msgid "limite de kilométrage (km)"
+msgstr "حد الكيلومترات (كم)"
+
+msgid "logo"
+msgstr "الشعار"
+
+msgid "maintenance"
+msgstr "الصيانة"
+
+msgid "maintenances"
+msgstr "عمليات الصيانة"
+
+msgid "marque"
+msgstr "الماركة"
+
+msgid "modifications proposées"
+msgstr "التعديلات المقترحة"
+
+msgid "modifié le"
+msgstr "تاريخ التعديل"
+
+msgid "modifié par"
+msgstr "عدّله"
+
+msgid "modifiée"
+msgstr "معدّلة"
+
+msgid "modèle"
+msgstr "الطراز"
+
+msgid "montant TVA"
+msgstr "مبلغ الضريبة"
+
+msgid "motif"
+msgstr "السبب"
+
+msgid "net à payer"
+msgstr "الصافي للدفع"
+
+msgid "nom"
+msgstr "الاسم"
+
+msgid "nom complet"
+msgstr "الاسم الكامل"
+
+msgid "nombre d'impressions"
+msgstr "عدد الطبعات"
+
+msgid "notes"
+msgstr "ملاحظات"
+
+msgid "notifications consultées le"
+msgstr "تاريخ الاطلاع على الإشعارات"
+
+msgid "numéro"
+msgstr "الرقم"
+
+msgid "option"
+msgstr "خيار"
+
+msgid "option de réservation"
+msgstr "خيار الحجز"
+
+msgid "options (instantané)"
+msgstr "الخيارات (لقطة)"
+
+msgid "options de réservation"
+msgstr "خيارات الحجز"
+
+msgid "paramètres de l'entreprise"
+msgstr "إعدادات الشركة"
+
+msgid "patente"
+msgstr "الرسم المهني"
+
+msgid "pays"
+msgstr "البلد"
+
+msgid "photo de véhicule"
+msgstr "صورة المركبة"
+
+msgid "photo principale"
+msgstr "الصورة الرئيسية"
+
+msgid "photos de véhicules"
+msgstr "صور المركبات"
+
+msgid "pied de facture"
+msgstr "تذييل الفاتورة"
+
+msgid "places"
+msgstr "المقاعد"
+
+msgid "politique carburant"
+msgstr "سياسة الوقود"
+
+msgid "politique kilométrage"
+msgstr "سياسة الكيلومترات"
+
+msgid "prix (instantané)"
+msgstr "السعر (لقطة)"
+
+msgid "prix / jour"
+msgstr "السعر / اليوم"
+
+msgid "prix total"
+msgstr "السعر الإجمالي"
+
+msgid "prix unitaire"
+msgstr "سعر الوحدة"
+
+msgid "prochain service"
+msgstr "الصيانة القادمة"
+
+msgid "promotion"
+msgstr "الخصم"
+
+msgid "promotions"
+msgstr "الخصومات"
+
+msgid "prénom"
+msgstr "الاسم الشخصي"
+
+msgid "quantité"
+msgstr "الكمية"
+
+msgid "raison sociale"
+msgstr "الاسم التجاري"
+
+msgid "rejetée"
+msgstr "مرفوض"
+
+msgid "remise"
+msgstr "الخصم"
+
+msgid "représentation"
+msgstr "التمثيل"
+
+msgid "réservation"
+msgstr "الحجز"
+
+msgid "réservations"
+msgstr "الحجوزات"
+
+msgid "rôle"
+msgstr "الدور"
+
+msgid "site web"
+msgstr "الموقع الإلكتروني"
+
+msgid "sous-total"
+msgstr "المجموع الفرعي"
+
+msgid "statut"
+msgstr "الوضع"
+
+msgid "supprimé"
+msgstr "محذوف"
+
+msgid "supprimé le"
+msgstr "تاريخ الحذف"
+
+msgid "supprimée"
+msgstr "محذوفة"
+
+msgid "traité le"
+msgstr "تاريخ المعالجة"
+
+msgid "traité par"
+msgstr "عالجه"
+
+msgid "type de remise"
+msgstr "نوع الخصم"
+
+msgid "téléphone"
+msgstr "الهاتف"
+
+msgid "utilisateur"
+msgstr "المستخدم"
+
+msgid "utilisateurs"
+msgstr "المستخدمون"
+
+msgid "valeur"
+msgstr "القيمة"
+
+msgid "valide au"
+msgstr "صالح إلى"
+
+msgid "valide du"
+msgstr "صالح من"
+
+msgid "véhicule"
+msgstr "المركبة"
+
+msgid "véhicule (instantané)"
+msgstr "المركبة (لقطة)"
+
+msgid "véhicules"
+msgstr "المركبات"
+
+msgid "Économique"
+msgstr "اقتصادية"
+
+msgid "Électrique"
+msgstr "كهربائية"
+
+msgid "Électrique / Hybride"
+msgstr "كهربائية / هجينة"
+
+msgid "Émettre la facture"
+msgstr "إصدار الفاتورة"
+
+msgid "Émettre la facture ? Cette action est définitive."
+msgstr "إصدار الفاتورة؟ هذا الإجراء نهائي."
+
+msgid "Émise le"
+msgstr "تاريخ الإصدار"
+
+msgid "État"
+msgstr "الحالة"
+
+msgid "État invalide."
+msgstr "حالة غير صالحة."
+
+msgid "État mis à jour."
+msgstr "تم تحديث الحالة."
+
+msgid "États-Unis"
+msgstr "الولايات المتحدة"
+
+msgid "émise le"
+msgstr "صدرت في"
+
+msgid "émise par"
+msgstr "أصدرها"
+
+msgid "état"
+msgstr "الحالة"
+
+msgid "— Choisir un client —"
+msgstr "— اختر عميلاً —"
+
+msgid "— Choisir un véhicule —"
+msgstr "— اختر مركبة —"

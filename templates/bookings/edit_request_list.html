@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Demandes de modification" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Demandes de modification" %}</h1>
+</div>
+
+<form method="get" class="filter-bar">
+    <div class="field">
+        <label for="status">{% trans "Statut" %}</label>
+        <select id="status" name="status">
+            <option value="">{% trans "En attente" %}</option>
+            {% for value, label in status_choices %}
+                <option value="{{ value }}" {% if value == status_filter %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn--ghost" type="submit">{% trans "Filtrer" %}</button>
+</form>
+
+<div class="card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>{% trans "Réservation" %}</th>
+                    <th>{% trans "Demandeur" %}</th>
+                    <th>{% trans "Motif" %}</th>
+                    <th>{% trans "Modifications" %}</th>
+                    <th>{% trans "Statut" %}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for edit_request in edit_requests %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'bookings:booking_detail' edit_request.booking.pk %}">#{{ edit_request.booking.pk }}</a><br>
+                            <small class="muted">{{ edit_request.booking.client.name }}</small>
+                        </td>
+                        <td>{{ edit_request.requested_by.get_full_name }}<br><small class="muted">{{ edit_request.created_at|date:"d/m/Y H:i" }}</small></td>
+                        <td>{{ edit_request.reason|truncatechars:90 }}</td>
+                        <td><small class="muted">{{ edit_request.proposed_changes }}</small></td>
+                        <td><span class="badge badge--{{ edit_request.status }}">{{ edit_request.get_status_display }}</span></td>
+                        <td class="nowrap">
+                            {% if edit_request.is_pending %}
+                                <form action="{% url 'bookings:edit_request_review' edit_request.pk %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="text" name="comment" placeholder="{% trans 'Commentaire' %}" class="btn--sm">
+                                    <button class="btn btn--ok btn--sm" type="submit" name="decision" value="approve">{% trans "Approuver" %}</button>
+                                    <button class="btn btn--danger btn--sm" type="submit" name="decision" value="reject">{% trans "Rejeter" %}</button>
+                                </form>
+                            {% else %}
+                                <small class="muted">
+                                    {{ edit_request.reviewed_by|default:"—" }}<br>{{ edit_request.reviewed_at|date:"d/m/Y H:i" }}
+                                </small>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="6" class="empty">{% trans "Aucune demande." %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "partials/pagination.html" %}
+{% endblock %}

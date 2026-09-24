@@ -1,0 +1,1490 @@
+# English translation for the Smart Rent Car CRM.
+# Generated from locale/ar via tools/compile_messages.py msgid order.
+# Compile with: python tools/compile_messages.py
+msgid ""
+msgstr ""
+"Project-Id-Version: Smart Rent Car CRM\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-23 10:00+0000\n"
+"PO-Revision-Date: 2026-09-23 10:00+0000\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "#%(id)s %(client)s — %(requester)s"
+msgstr "#%(id)s %(client)s — %(requester)s"
+
+msgid "Accès réservé au personnel."
+msgstr "Access restricted to staff."
+
+msgid "Actif"
+msgstr "Active"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "Actions concernant vos réservations."
+msgstr "Activity on your bookings."
+
+msgid "Administrateur"
+msgstr "Administrator"
+
+msgid "Administration Django"
+msgstr "Django admin"
+
+msgid "Adresse"
+msgstr "Address"
+
+msgid "Ajouter une intervention"
+msgstr "Add a service record"
+
+msgid "Allemagne"
+msgstr "Germany"
+
+msgid "Annuler"
+msgstr "Cancel"
+
+msgid "Annulée"
+msgstr "Cancelled"
+
+msgid "Année"
+msgstr "Year"
+
+msgid "Année invalide : attendu entre 1990 et %(max)s."
+msgstr "Invalid year: expected between 1990 and %(max)s."
+
+msgid "Approbation"
+msgstr "Approval"
+
+msgid "Approuver"
+msgstr "Approve"
+
+msgid "Approuvée"
+msgstr "Approved"
+
+msgid "Archiver"
+msgstr "Archive"
+
+msgid "Archiver ce client ?"
+msgstr "Archive this client?"
+
+msgid "Archiver ce véhicule ?"
+msgstr "Archive this vehicle?"
+
+msgid "Archiver cette réservation ?"
+msgstr "Archive this booking?"
+
+msgid "Archiver la réservation"
+msgstr "Archive the booking"
+
+msgid "Archiver le client"
+msgstr "Archive the client"
+
+msgid "Archiver le véhicule"
+msgstr "Archive the vehicle"
+
+msgid "Assurance partielle"
+msgstr "Partial insurance"
+
+msgid "Assurance tous risques"
+msgstr "Full insurance"
+
+msgid "Aucun client."
+msgstr "No clients."
+
+msgid "Aucun départ aujourd'hui."
+msgstr "No departures today."
+
+msgid "Aucun employé."
+msgstr "No employees."
+
+msgid "Aucun véhicule."
+msgstr "No vehicles."
+
+msgid "Aucune action enregistrée."
+msgstr "No actions recorded."
+
+msgid "Aucune demande."
+msgstr "No requests."
+
+msgid "Aucune entrée."
+msgstr "No entries."
+
+msgid "Aucune facture."
+msgstr "No invoices."
+
+msgid "Aucune intervention."
+msgstr "No service records."
+
+msgid "Aucune notification."
+msgstr "No notifications."
+
+msgid "Aucune photo."
+msgstr "No photos."
+
+msgid "Aucune promotion."
+msgstr "No promotions."
+
+msgid "Aucune réservation."
+msgstr "No bookings."
+
+msgid "Automatique"
+msgstr "Automatic"
+
+msgid "Autre"
+msgstr "Other"
+
+msgid "Aéroport Marrakech, Centre-ville, Hôtel…"
+msgstr "Marrakech Airport, City centre, Hotel…"
+
+msgid "Aéroport Marrakech-Menara"
+msgstr "Marrakech-Menara Airport"
+
+msgid "Belgique"
+msgstr "Belgium"
+
+msgid "Boîte"
+msgstr "Gearbox"
+
+msgid "CIN"
+msgstr "National ID"
+
+msgid "CIN / Passeport"
+msgstr "National ID / Passport"
+
+msgid "CIN pour les clients marocains, passeport sinon."
+msgstr "National ID for Moroccan clients, passport otherwise."
+
+msgid "CRM interne"
+msgstr "Internal CRM"
+
+msgid "Canada"
+msgstr "Canada"
+
+msgid "Carburant"
+msgstr "Fuel"
+
+msgid "Carburant / Boîte"
+msgstr "Fuel / Gearbox"
+
+msgid "Carte d'Identité Nationale (identifiant unique)."
+msgstr "National Identity Card (unique identifier)."
+
+msgid "Catégorie"
+msgstr "Category"
+
+msgid "Ce véhicule est déjà réservé du %(from)s au %(to)s (réservation #%(id)s)."
+msgstr "This vehicle is already booked from %(from)s to %(to)s (booking #%(id)s)."
+
+msgid "Ces informations apparaissent sur les factures."
+msgstr "This information appears on invoices."
+
+msgid "Cette demande a déjà été traitée."
+msgstr "This request has already been processed."
+
+msgid "Cette réservation a déjà une facture."
+msgstr "This booking already has an invoice."
+
+msgid "Changer l'état"
+msgstr "Change the state"
+
+msgid "Changer le statut"
+msgstr "Change the status"
+
+msgid "Chiffre du mois"
+msgstr "Turnover this month"
+
+msgid "Client"
+msgstr "Client"
+
+msgid "Client (A → Z)"
+msgstr "Client (A → Z)"
+
+msgid "Client archivé."
+msgstr "Client archived."
+
+msgid "Client créé."
+msgstr "Client created."
+
+msgid "Client enregistré."
+msgstr "Client saved."
+
+msgid "Client, immatriculation, lieu…"
+msgstr "Client, plate number, location…"
+
+msgid "Clients"
+msgstr "Clients"
+
+msgid "Coche pour faire de cette photo la photo principale (remplace la photo principale du véhicule)."
+msgstr "Tick to make this photo the main photo (replaces the vehicle's main photo)."
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Code promotion (optionnel)"
+msgstr "Promo code (optional)"
+
+msgid "Code promotion inconnu."
+msgstr "Unknown promo code."
+
+msgid "Code, description…"
+msgstr "Code, description…"
+
+msgid "Commentaire"
+msgstr "Comment"
+
+msgid "Compacte"
+msgstr "Compact"
+
+msgid "Conditions"
+msgstr "Terms"
+
+msgid "Conducteur additionnel"
+msgstr "Additional driver"
+
+msgid "Confirmer l'archivage"
+msgstr "Confirm archiving"
+
+msgid "Confirmer le changement de statut ?"
+msgstr "Confirm the status change?"
+
+msgid "Confirmée"
+msgstr "Confirmed"
+
+msgid "Connexion"
+msgstr "Sign in"
+
+msgid "Contacter sur WhatsApp"
+msgstr "Contact on WhatsApp"
+
+msgid "Coordonnées"
+msgstr "Contact details"
+
+msgid "Coordonnées bancaires"
+msgstr "Bank details"
+
+msgid "Coût"
+msgstr "Cost"
+
+msgid "Création"
+msgstr "Created"
+
+msgid "Créer un client"
+msgstr "Create a client"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Date de départ"
+msgstr "Pick-up date"
+
+msgid "Date de retour"
+msgstr "Return date"
+
+msgid "Dates et lieux"
+msgstr "Dates and locations"
+
+msgid "Demande #%(id)s · %(booking)s"
+msgstr "Request #%(id)s · %(booking)s"
+
+msgid "Demande approuvée."
+msgstr "Request approved."
+
+msgid "Demande de modification à valider"
+msgstr "Change request awaiting approval"
+
+msgid "Demande envoyée pour approbation."
+msgstr "Request sent for approval."
+
+msgid "Demande rejetée."
+msgstr "Request rejected."
+
+msgid "Demander une modification"
+msgstr "Request a change"
+
+msgid "Demandes de modification"
+msgstr "Change requests"
+
+msgid "Demandes en attente"
+msgstr "Pending requests"
+
+msgid "Demandeur"
+msgstr "Requester"
+
+msgid "Dernière ouverture du panneau de notifications (badge)."
+msgstr "Last time the notification panel was opened (badge)."
+
+msgid "Dernières réservations"
+msgstr "Latest bookings"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Devient l'image principale du véhicule. Si une photo de la galerie était marquée « principale », elle ne le sera plus."
+msgstr "Becomes the vehicle's main image. If a gallery photo was marked as \"main\", it no longer will be."
+
+msgid "Diesel"
+msgstr "Diesel"
+
+msgid "Disponible"
+msgstr "Available"
+
+msgid "Document"
+msgstr "Document"
+
+msgid "Déconnexion"
+msgstr "Sign out"
+
+msgid "Départ"
+msgstr "Pick-up"
+
+msgid "Départ le plus lointain"
+msgstr "Latest pick-up"
+
+msgid "Départ le plus proche"
+msgstr "Earliest pick-up"
+
+msgid "Départs aujourd'hui"
+msgstr "Pick-ups today"
+
+msgid "Désactiver"
+msgstr "Deactivate"
+
+msgid "Désignation"
+msgstr "Description"
+
+msgid "Détail"
+msgstr "Details"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Employé"
+msgstr "Employee"
+
+msgid "Employé ayant enregistré la réservation."
+msgstr "Employee who created the booking."
+
+msgid "Employés"
+msgstr "Employees"
+
+msgid "En attente"
+msgstr "Pending"
+
+msgid "En cours"
+msgstr "Ongoing"
+
+msgid "En maintenance"
+msgstr "In maintenance"
+
+msgid "Enregistrement effectué."
+msgstr "Saved."
+
+msgid "Enregistrer"
+msgstr "Save"
+
+msgid "Envoyer la demande"
+msgstr "Send the request"
+
+msgid "Espagne"
+msgstr "Spain"
+
+msgid "Essence"
+msgstr "Petrol"
+
+msgid "Estimation :"
+msgstr "Estimate:"
+
+msgid "Export CSV"
+msgstr "Export CSV"
+
+msgid "Export Excel"
+msgstr "Export Excel"
+
+msgid "FACTURE"
+msgstr "INVOICE"
+
+msgid "Facture"
+msgstr "Invoice"
+
+msgid "Facture %(number)s émise."
+msgstr "Invoice %(number)s issued."
+
+msgid "Facture émise électroniquement — document immuable."
+msgstr "Invoice issued electronically — immutable document."
+
+msgid "Factures"
+msgstr "Invoices"
+
+msgid "Familiale"
+msgstr "Family"
+
+msgid "Fermer"
+msgstr "Close"
+
+msgid "Fiche technique"
+msgstr "Specifications"
+
+msgid "Filtre actif : vous voyez uniquement vos réservations."
+msgstr "Filter active: you are only seeing your own bookings."
+
+msgid "Filtrer"
+msgstr "Filter"
+
+msgid "Filtres avancés"
+msgstr "Advanced filters"
+
+msgid "Formulaire invalide."
+msgstr "Invalid form."
+
+msgid "France"
+msgstr "France"
+
+msgid "GPS"
+msgstr "GPS"
+
+msgid "Galerie photos"
+msgstr "Photo gallery"
+
+msgid "Gestion"
+msgstr "Management"
+
+msgid "Historique"
+msgstr "History"
+
+msgid "Historique complet et immuable des actions."
+msgstr "Complete, immutable history of actions."
+
+msgid "Historique des actions"
+msgstr "Action history"
+
+msgid "Historique des réservations"
+msgstr "Booking history"
+
+msgid "Horodatage"
+msgstr "Timestamp"
+
+msgid "Hors période"
+msgstr "Out of period"
+
+msgid "Hors service"
+msgstr "Out of service"
+
+msgid "Hybride"
+msgstr "Hybrid"
+
+msgid "ICE"
+msgstr "ICE"
+
+msgid "ID objet"
+msgstr "Object ID"
+
+msgid "IF"
+msgstr "IF"
+
+msgid "IP"
+msgstr "IP"
+
+msgid "Identifiant Commun de l'Entreprise"
+msgstr "Common Company Identifier"
+
+msgid "Identifiant Fiscal"
+msgstr "Tax Identifier"
+
+msgid "Identité"
+msgstr "Identity"
+
+msgid "Image"
+msgstr "Image"
+
+msgid "Immatriculation"
+msgstr "Plate number"
+
+msgid "Impression"
+msgstr "Print"
+
+msgid "Impressions"
+msgstr "Prints"
+
+msgid "Imprimer"
+msgstr "Print"
+
+msgid "Imprimer (HTML)"
+msgstr "Print (HTML)"
+
+msgid "Inactif"
+msgstr "Inactive"
+
+msgid "Indiquez la limite de kilométrage."
+msgstr "Enter the mileage limit."
+
+msgid "Informations"
+msgstr "Information"
+
+msgid "Instantané des champs à modifier : {champ: nouvelle valeur}."
+msgstr "Snapshot of the fields to change: {field: new value}."
+
+msgid "International"
+msgstr "International"
+
+msgid "Italie"
+msgstr "Italy"
+
+msgid "Journal complet du CRM."
+msgstr "Complete CRM log."
+
+msgid "Journal d'audit"
+msgstr "Audit log"
+
+msgid "Jours"
+msgstr "Days"
+
+msgid "Jours facturés"
+msgstr "Days billed"
+
+msgid "Kilométrage"
+msgstr "Mileage"
+
+msgid "Kilométrage illimité"
+msgstr "Unlimited mileage"
+
+msgid "Kilométrage limité"
+msgstr "Limited mileage"
+
+msgid "Km"
+msgstr "km"
+
+msgid "La date de fin doit suivre la date de début."
+msgstr "The end date must be after the start date."
+
+msgid "La date de retour doit être postérieure au départ."
+msgstr "The return date must be after the pick-up."
+
+msgid "La date de retour doit être postérieure à la date de départ."
+msgstr "The return date must be after the pick-up date."
+
+msgid "La promotion « %(code)s » n'est pas valide aujourd'hui."
+msgstr "The promotion \"%(code)s\" is not valid today."
+
+msgid "La remise ne peut dépasser le sous-total."
+msgstr "The discount cannot exceed the subtotal."
+
+msgid "La réservation #{{ id }} sera archivée (suppression logique)."
+msgstr "Booking #{{ id }} will be archived (soft delete)."
+
+msgid "Langue"
+msgstr "Language"
+
+msgid "Le client « {{ name }} » sera archivé (suppression logique). Son historique de réservations et de factures reste consultable."
+msgstr "Client \"{{ name }}\" will be archived (soft delete). Their booking and invoice history remains available."
+
+msgid "Le journal d'audit est immuable."
+msgstr "The audit log is immutable."
+
+msgid "Le montant de la réservation est nul."
+msgstr "The booking amount is zero."
+
+msgid "Le motif est obligatoire."
+msgstr "The reason is required."
+
+msgid "Le prix définitif est calculé par le serveur à l'enregistrement."
+msgstr "The final price is computed by the server on save."
+
+msgid "Le prochain service doit suivre la date d'intervention."
+msgstr "The next service must be after the service date."
+
+msgid "Le véhicule « {{ car }} » sera archivé (suppression logique). Son historique de réservations reste consultable."
+msgstr "Vehicle \"{{ car }}\" will be archived (soft delete). Its booking history remains available."
+
+msgid "Les réservations affichées ci-dessous sont uniquement les vôtres. Les statistiques du parc restent globales."
+msgstr "The bookings shown below are only yours. Fleet statistics remain global."
+
+msgid "Lieu de prise en charge"
+msgstr "Pick-up location"
+
+msgid "Lieu de restitution"
+msgstr "Drop-off location"
+
+msgid "Limite (km)"
+msgstr "Limit (km)"
+
+msgid "Livraison / reprise"
+msgstr "Delivery / collection"
+
+msgid "Location"
+msgstr "Rental"
+
+msgid "Location de véhicule"
+msgstr "Vehicle rental"
+
+msgid "Loué"
+msgstr "Rented"
+
+msgid "Luxe"
+msgstr "Luxury"
+
+msgid "Maintenance"
+msgstr "Maintenance"
+
+msgid "Maintenance enregistrée."
+msgstr "Maintenance recorded."
+
+msgid "Manuelle"
+msgstr "Manual"
+
+msgid "Maroc"
+msgstr "Morocco"
+
+msgid "Marque, modèle, immatriculation…"
+msgstr "Make, model, plate number…"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Mes réservations"
+msgstr "My bookings"
+
+msgid "Mettre à jour"
+msgstr "Update"
+
+msgid "Minibus"
+msgstr "Minibus"
+
+msgid "Modification"
+msgstr "Change"
+
+msgid "Modifications"
+msgstr "Changes"
+
+msgid "Modifier"
+msgstr "Edit"
+
+msgid "Modifier la promotion"
+msgstr "Edit the promotion"
+
+msgid "Modifier la réservation"
+msgstr "Edit the booking"
+
+msgid "Modifier le client"
+msgstr "Edit the client"
+
+msgid "Modifier le véhicule"
+msgstr "Edit the vehicle"
+
+msgid "Modifier un employé"
+msgstr "Edit an employee"
+
+msgid "Modifier un véhicule"
+msgstr "Edit a vehicle"
+
+msgid "Modèle"
+msgstr "Model"
+
+msgid "Montant"
+msgstr "Amount"
+
+msgid "Montant fixe"
+msgstr "Fixed amount"
+
+msgid "Montants"
+msgstr "Amounts"
+
+msgid "Mot de passe"
+msgstr "Password"
+
+msgid "Motif"
+msgstr "Reason"
+
+msgid "Même niveau"
+msgstr "Same level"
+
+msgid "NET À PAYER"
+msgstr "NET TO PAY"
+
+msgid "Net HT"
+msgstr "Net excl. VAT"
+
+msgid "Net à payer"
+msgstr "Net to pay"
+
+msgid "Nom"
+msgstr "Name"
+
+msgid "Nom, email, CIN…"
+msgstr "Name, email, national ID…"
+
+msgid "Nom, téléphone, document, pays…"
+msgstr "Name, phone, document, country…"
+
+msgid "Notes"
+msgstr "Notes"
+
+msgid "Notifications"
+msgstr "Notifications"
+
+msgid "Nouveau client"
+msgstr "New client"
+
+msgid "Nouveau véhicule"
+msgstr "New vehicle"
+
+msgid "Nouvel employé"
+msgstr "New employee"
+
+msgid "Nouvelle date de départ"
+msgstr "New pick-up date"
+
+msgid "Nouvelle date de retour"
+msgstr "New return date"
+
+msgid "Nouvelle intervention"
+msgstr "New service record"
+
+msgid "Nouvelle intervention de maintenance"
+msgstr "New maintenance record"
+
+msgid "Nouvelle promotion"
+msgstr "New promotion"
+
+msgid "Nouvelle réservation"
+msgstr "New booking"
+
+msgid "Null pour les actions système."
+msgstr "Null for system actions."
+
+msgid "Numéro"
+msgstr "Number"
+
+msgid "Numéro, client, immatriculation…"
+msgstr "Number, client, plate number…"
+
+msgid "N°"
+msgstr "No."
+
+msgid "Objet"
+msgstr "Object"
+
+msgid "Objet, utilisateur…"
+msgstr "Object, user…"
+
+msgid "Option"
+msgstr "Option"
+
+msgid "Options (extras)"
+msgstr "Options (extras)"
+
+msgid "Page {{ num }} / {{ total }}"
+msgstr "Page {{ num }} / {{ total }}"
+
+msgid "Pagination"
+msgstr "Pagination"
+
+msgid "Paramètres de l'entreprise"
+msgstr "Company settings"
+
+msgid "Paramètres de l'entreprise enregistrés."
+msgstr "Company settings saved."
+
+msgid "Paramètres entreprise"
+msgstr "Company settings"
+
+msgid "Parc automobile"
+msgstr "Fleet"
+
+msgid "Parc par catégorie"
+msgstr "Fleet by category"
+
+msgid "Parc par état"
+msgstr "Fleet by state"
+
+msgid "Parc total"
+msgstr "Total fleet"
+
+msgid "Parc vide."
+msgstr "Empty fleet."
+
+msgid "Pays"
+msgstr "Country"
+
+msgid "Pays-Bas"
+msgstr "Netherlands"
+
+msgid "Photos"
+msgstr "Photos"
+
+msgid "Photos invalides."
+msgstr "Invalid photos."
+
+msgid "Places"
+msgstr "Seats"
+
+msgid "Plein / Plein"
+msgstr "Full / Full"
+
+msgid "Plein / Vide"
+msgstr "Full / Empty"
+
+msgid "Plus récentes d'abord"
+msgstr "Newest first"
+
+msgid "Pourcentage"
+msgstr "Percentage"
+
+msgid "Principale"
+msgstr "Main"
+
+msgid "Prise en charge"
+msgstr "Pick-up"
+
+msgid "Prix / jour"
+msgstr "Price / day"
+
+msgid "Prix unitaire"
+msgstr "Unit price"
+
+msgid "Prochain service"
+msgstr "Next service"
+
+msgid "Promotion créée."
+msgstr "Promotion created."
+
+msgid "Promotion enregistrée."
+msgstr "Promotion saved."
+
+msgid "Promotions"
+msgstr "Promotions"
+
+msgid "Précédent"
+msgstr "Previous"
+
+msgid "Période"
+msgstr "Period"
+
+msgid "Qté"
+msgstr "Qty"
+
+msgid "Quantité"
+msgstr "Quantity"
+
+msgid "RC"
+msgstr "RC"
+
+msgid "Recherche"
+msgstr "Search"
+
+msgid "Registre du Commerce"
+msgstr "Trade Register"
+
+msgid "Rejet"
+msgstr "Rejection"
+
+msgid "Rejeter"
+msgstr "Reject"
+
+msgid "Rejetée"
+msgstr "Rejected"
+
+msgid "Remise"
+msgstr "Discount"
+
+msgid "Responsable"
+msgstr "Manager"
+
+msgid "Restitution"
+msgstr "Drop-off"
+
+msgid "Retour"
+msgstr "Return"
+
+msgid "Retours aujourd'hui"
+msgstr "Returns today"
+
+msgid "Royaume-Uni"
+msgstr "United Kingdom"
+
+msgid "Réactiver"
+msgstr "Reactivate"
+
+msgid "Réservation"
+msgstr "Booking"
+
+msgid "Réservation %(action)s"
+msgstr "Booking %(action)s"
+
+msgid "Réservation archivée."
+msgstr "Booking archived."
+
+msgid "Réservation créée."
+msgstr "Booking created."
+
+msgid "Réservation enregistrée."
+msgstr "Booking saved."
+
+msgid "Réservation introuvable."
+msgstr "Booking not found."
+
+msgid "Réservations"
+msgstr "Bookings"
+
+msgid "Réservations du jour"
+msgstr "Today's bookings"
+
+msgid "Réserver"
+msgstr "Book"
+
+msgid "Rôle"
+msgstr "Role"
+
+msgid "SUV / 4x4"
+msgstr "SUV / 4x4"
+
+msgid "Se connecter"
+msgstr "Sign in"
+
+msgid "Siège enfant"
+msgstr "Child seat"
+
+msgid "Sous-total"
+msgstr "Subtotal"
+
+msgid "Statut"
+msgstr "Status"
+
+msgid "Statut invalide."
+msgstr "Invalid status."
+
+msgid "Statut mis à jour."
+msgstr "Status updated."
+
+msgid "Suivant"
+msgstr "Next"
+
+msgid "Suppression"
+msgstr "Deletion"
+
+msgid "Supprimer"
+msgstr "Delete"
+
+msgid "Système"
+msgstr "System"
+
+msgid "TVA"
+msgstr "VAT"
+
+msgid "TVA (%)"
+msgstr "VAT (%)"
+
+msgid "TVA par défaut (%)"
+msgstr "Default VAT (%)"
+
+msgid "Tableau de bord"
+msgstr "Dashboard"
+
+msgid "Terminée"
+msgstr "Completed"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Total réservation"
+msgstr "Booking total"
+
+msgid "Tous"
+msgstr "All"
+
+msgid "Tous les rôles"
+msgstr "All roles"
+
+msgid "Tous les statuts"
+msgstr "All statuses"
+
+msgid "Tous les états"
+msgstr "All states"
+
+msgid "Tout l'historique"
+msgstr "Full history"
+
+msgid "Toutes"
+msgstr "All"
+
+msgid "Toutes les actions"
+msgstr "All actions"
+
+msgid "Toutes les réservations"
+msgstr "All bookings"
+
+msgid "Trier par"
+msgstr "Sort by"
+
+msgid "Tél"
+msgstr "Tel"
+
+msgid "Télécharger (PDF)"
+msgstr "Download (PDF)"
+
+msgid "Télécharger le PDF"
+msgstr "Download the PDF"
+
+msgid "Téléphone"
+msgstr "Phone"
+
+msgid "Un pourcentage ne peut dépasser 100."
+msgstr "A percentage cannot exceed 100."
+
+msgid "Une demande est déjà en attente pour cette réservation."
+msgstr "A request is already pending for this booking."
+
+msgid "Une facture émise est immuable : créez un avoir au lieu de la modifier."
+msgstr "An issued invoice is immutable: create a credit note instead of editing it."
+
+msgid "Utilisateur"
+msgstr "User"
+
+msgid "Validité"
+msgstr "Validity"
+
+msgid "Votre demande sera examinée par un responsable. Seuls les champs que vous remplissez seront proposés comme modifications."
+msgstr "Your request will be reviewed by a manager. Only the fields you fill in will be proposed as changes."
+
+msgid "Votre rôle ne permet pas d'accéder à cette page."
+msgstr "Your role does not allow access to this page."
+
+msgid "Vous n'avez pas accès à cette réservation."
+msgstr "You do not have access to this booking."
+
+msgid "Vous voyez uniquement les réservations que vous avez enregistrées."
+msgstr "You are only seeing the bookings you created."
+
+msgid "Véhicule"
+msgstr "Vehicle"
+
+msgid "Véhicule archivé."
+msgstr "Vehicle archived."
+
+msgid "Véhicule créé."
+msgstr "Vehicle created."
+
+msgid "Véhicule enregistré."
+msgstr "Vehicle saved."
+
+msgid "Véhicule et client"
+msgstr "Vehicle and client"
+
+msgid "Véhicule introuvable."
+msgstr "Vehicle not found."
+
+msgid "Véhicules"
+msgstr "Vehicles"
+
+msgid "Véhicules disponibles"
+msgstr "Available vehicles"
+
+msgid "Véhicules en location"
+msgstr "Vehicles on rent"
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "actif"
+msgstr "active"
+
+msgid "action"
+msgstr "action"
+
+msgid "adresse"
+msgstr "address"
+
+msgid "adresse IP"
+msgstr "IP address"
+
+msgid "année"
+msgstr "year"
+
+msgid "année de séquence"
+msgstr "sequence year"
+
+msgid "approuvée"
+msgstr "approved"
+
+msgid "boîte"
+msgstr "gearbox"
+
+msgid "carburant"
+msgstr "fuel"
+
+msgid "catégorie"
+msgstr "category"
+
+msgid "catégorie de véhicule"
+msgstr "vehicle category"
+
+msgid "catégories de véhicules"
+msgstr "vehicle categories"
+
+msgid "changements"
+msgstr "changes"
+
+msgid "client"
+msgstr "client"
+
+msgid "client (instantané)"
+msgstr "client (snapshot)"
+
+msgid "clients"
+msgstr "clients"
+
+msgid "code"
+msgstr "code"
+
+msgid "code promotion"
+msgstr "promo code"
+
+msgid "commentaire"
+msgstr "comment"
+
+msgid "commentaire de traitement"
+msgstr "processing comment"
+
+msgid "compteur de factures"
+msgstr "invoice counter"
+
+msgid "compteurs de factures"
+msgstr "invoice counters"
+
+msgid "coordonnées bancaires"
+msgstr "bank details"
+
+msgid "coût"
+msgstr "cost"
+
+msgid "créé le"
+msgstr "created on"
+
+msgid "créé par"
+msgstr "created by"
+
+msgid "créée"
+msgstr "created"
+
+msgid "créée par"
+msgstr "created by"
+
+msgid "date"
+msgstr "date"
+
+msgid "date de départ"
+msgstr "pick-up date"
+
+msgid "date de retour"
+msgstr "return date"
+
+msgid "dates (instantané)"
+msgstr "dates (snapshot)"
+
+msgid "demande de modification"
+msgstr "change request"
+
+msgid "demandes de modification"
+msgstr "change requests"
+
+msgid "demandeur"
+msgstr "requester"
+
+msgid "dernier numéro"
+msgstr "last number"
+
+msgid "description"
+msgstr "description"
+
+msgid "email"
+msgstr "email"
+
+msgid "facture"
+msgstr "invoice"
+
+msgid "factures"
+msgstr "invoices"
+
+msgid "fichier PDF"
+msgstr "PDF file"
+
+msgid "horodatage"
+msgstr "timestamp"
+
+msgid "image"
+msgstr "image"
+
+msgid "image principale"
+msgstr "main image"
+
+msgid "immatriculation"
+msgstr "plate number"
+
+msgid "imprimée"
+msgstr "printed"
+
+msgid "journal d'audit"
+msgstr "audit log"
+
+msgid "kilométrage"
+msgstr "mileage"
+
+msgid "kilométrage au service"
+msgstr "mileage at service"
+
+msgid "langue par défaut"
+msgstr "default language"
+
+msgid "lieu de prise en charge"
+msgstr "pick-up location"
+
+msgid "lieu de restitution"
+msgstr "drop-off location"
+
+msgid "limite de kilométrage (km)"
+msgstr "mileage limit (km)"
+
+msgid "logo"
+msgstr "logo"
+
+msgid "maintenance"
+msgstr "maintenance"
+
+msgid "maintenances"
+msgstr "maintenance records"
+
+msgid "marque"
+msgstr "make"
+
+msgid "modifications proposées"
+msgstr "proposed changes"
+
+msgid "modifié le"
+msgstr "modified on"
+
+msgid "modifié par"
+msgstr "modified by"
+
+msgid "modifiée"
+msgstr "modified"
+
+msgid "modèle"
+msgstr "model"
+
+msgid "montant TVA"
+msgstr "VAT amount"
+
+msgid "motif"
+msgstr "reason"
+
+msgid "net à payer"
+msgstr "net to pay"
+
+msgid "nom"
+msgstr "name"
+
+msgid "nom complet"
+msgstr "full name"
+
+msgid "nombre d'impressions"
+msgstr "print count"
+
+msgid "notes"
+msgstr "notes"
+
+msgid "notifications consultées le"
+msgstr "notifications seen on"
+
+msgid "numéro"
+msgstr "number"
+
+msgid "option"
+msgstr "option"
+
+msgid "option de réservation"
+msgstr "booking option"
+
+msgid "options (instantané)"
+msgstr "options (snapshot)"
+
+msgid "options de réservation"
+msgstr "booking options"
+
+msgid "paramètres de l'entreprise"
+msgstr "company settings"
+
+msgid "patente"
+msgstr "patente"
+
+msgid "pays"
+msgstr "country"
+
+msgid "photo de véhicule"
+msgstr "vehicle photo"
+
+msgid "photo principale"
+msgstr "main photo"
+
+msgid "photos de véhicules"
+msgstr "vehicle photos"
+
+msgid "pied de facture"
+msgstr "invoice footer"
+
+msgid "places"
+msgstr "seats"
+
+msgid "politique carburant"
+msgstr "fuel policy"
+
+msgid "politique kilométrage"
+msgstr "mileage policy"
+
+msgid "prix (instantané)"
+msgstr "price (snapshot)"
+
+msgid "prix / jour"
+msgstr "price / day"
+
+msgid "prix total"
+msgstr "total price"
+
+msgid "prix unitaire"
+msgstr "unit price"
+
+msgid "prochain service"
+msgstr "next service"
+
+msgid "promotion"
+msgstr "promotion"
+
+msgid "promotions"
+msgstr "promotions"
+
+msgid "prénom"
+msgstr "first name"
+
+msgid "quantité"
+msgstr "quantity"
+
+msgid "raison sociale"
+msgstr "company name"
+
+msgid "rejetée"
+msgstr "rejected"
+
+msgid "remise"
+msgstr "discount"
+
+msgid "représentation"
+msgstr "representation"
+
+msgid "réservation"
+msgstr "booking"
+
+msgid "réservations"
+msgstr "bookings"
+
+msgid "rôle"
+msgstr "role"
+
+msgid "site web"
+msgstr "website"
+
+msgid "sous-total"
+msgstr "subtotal"
+
+msgid "statut"
+msgstr "status"
+
+msgid "supprimé"
+msgstr "deleted"
+
+msgid "supprimé le"
+msgstr "deleted on"
+
+msgid "supprimée"
+msgstr "deleted"
+
+msgid "traité le"
+msgstr "processed on"
+
+msgid "traité par"
+msgstr "processed by"
+
+msgid "type de remise"
+msgstr "discount type"
+
+msgid "téléphone"
+msgstr "phone"
+
+msgid "utilisateur"
+msgstr "user"
+
+msgid "utilisateurs"
+msgstr "users"
+
+msgid "valeur"
+msgstr "value"
+
+msgid "valide au"
+msgstr "valid until"
+
+msgid "valide du"
+msgstr "valid from"
+
+msgid "véhicule"
+msgstr "vehicle"
+
+msgid "véhicule (instantané)"
+msgstr "vehicle (snapshot)"
+
+msgid "véhicules"
+msgstr "vehicles"
+
+msgid "Économique"
+msgstr "Economy"
+
+msgid "Électrique"
+msgstr "Electric"
+
+msgid "Électrique / Hybride"
+msgstr "Electric / Hybrid"
+
+msgid "Émettre la facture"
+msgstr "Issue the invoice"
+
+msgid "Émettre la facture ? Cette action est définitive."
+msgstr "Issue the invoice? This action is final."
+
+msgid "Émise le"
+msgstr "Issued on"
+
+msgid "État"
+msgstr "State"
+
+msgid "État invalide."
+msgstr "Invalid state."
+
+msgid "État mis à jour."
+msgstr "State updated."
+
+msgid "États-Unis"
+msgstr "United States"
+
+msgid "émise le"
+msgstr "issued on"
+
+msgid "émise par"
+msgstr "issued by"
+
+msgid "état"
+msgstr "state"
+
+msgid "— Choisir un client —"
+msgstr "— Choose a client —"
+
+msgid "— Choisir un véhicule —"
+msgstr "— Choose a vehicle —"

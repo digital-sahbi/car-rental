@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% if object %}{% trans "Modifier le client" %}{% else %}{% trans "Nouveau client" %}{% endif %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% if object %}{% trans "Modifier le client" %}{% else %}{% trans "Nouveau client" %}{% endif %}</h1>
+    <div class="page-head__actions">
+        <a class="btn btn--ghost" href="{% url 'clients:client_list' %}">{% trans "Retour" %}</a>
+    </div>
+</div>
+
+<div class="card">
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {% if request.GET.next %}<input type="hidden" name="next" value="{{ request.GET.next }}">{% endif %}
+        {% include "partials/form_fields.html" %}
+        <button class="btn" type="submit">{% trans "Enregistrer" %}</button>
+    </form>
+</div>
+
+<datalist id="country-list">
+    <option value="Maroc"></option>
+    <option value="France"></option>
+    <option value="Espagne"></option>
+    <option value="Royaume-Uni"></option>
+    <option value="Allemagne"></option>
+    <option value="États-Unis"></option>
+    <option value="Belgique"></option>
+    <option value="Italie"></option>
+    <option value="Pays-Bas"></option>
+    <option value="Canada"></option>
+</datalist>
+{% endblock %}

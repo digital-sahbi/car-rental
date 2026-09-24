@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Véhicules" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Parc automobile" %}</h1>
+    <div class="page-head__actions">
+        <a class="btn" href="{% url 'vehicles:car_add' %}">+ {% trans "Nouveau véhicule" %}</a>
+    </div>
+</div>
+
+<form method="get" class="filter-bar">
+    <div class="field">
+        <label for="q">{% trans "Recherche" %}</label>
+        <input type="search" id="q" name="q" value="{{ request.GET.q }}"
+               placeholder="{% trans 'Marque, modèle, immatriculation…' %}">
+    </div>
+    <div class="field">
+        <label for="category">{% trans "Catégorie" %}</label>
+        <select id="category" name="category">
+            <option value="">{% trans "Toutes" %}</option>
+            {% for category in categories %}
+                <option value="{{ category.pk }}" {% if request.GET.category == category.pk|stringformat:"s" %}selected{% endif %}>
+                    {{ category.get_name_display }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="field">
+        <label for="status">{% trans "État" %}</label>
+        <select id="status" name="status">
+            <option value="">{% trans "Tous les états" %}</option>
+            {% for value, label in status_choices %}
+                <option value="{{ value }}" {% if request.GET.status == value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn--ghost" type="submit">{% trans "Filtrer" %}</button>
+</form>
+
+<div class="card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>{% trans "Véhicule" %}</th>
+                    <th>{% trans "Immatriculation" %}</th>
+                    <th>{% trans "Catégorie" %}</th>
+                    <th>{% trans "Carburant" %}</th>
+                    <th class="num">{% trans "Prix / jour" %}</th>
+                    <th>{% trans "État" %}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for car in cars %}
+                    <tr>
+                        <td>
+                            {% if car.main_image %}
+                                <img class="thumb" src="{{ car.main_image.url }}" alt="{{ car.full_name }}">
+                            {% else %}
+                                <span class="muted">—</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'vehicles:car_detail' car.pk %}">{{ car.full_name }}</a>
+                            <br><small class="muted">{{ car.name }} · {{ car.year }} · {{ car.seats }} {% trans "places" %}</small>
+                        </td>
+                        <td class="nowrap">{{ car.plate_number }}</td>
+                        <td>{{ car.category.get_name_display }}</td>
+                        <td>{{ car.get_fuel_type_display }}</td>
+                        <td class="num">{{ car.price_per_day|floatformat:2 }}</td>
+                        <td><span class="badge badge--{{ car.status }}">{{ car.get_status_display }}</span></td>
+                        <td class="nowrap">
+                            <a href="{% url 'vehicles:car_edit' car.pk %}">{% trans "Modifier" %}</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="8" class="empty">{% trans "Aucun véhicule." %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "partials/pagination.html" %}
+{% endblock %}

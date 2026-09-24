@@ -1,0 +1,145 @@
+{% load i18n %}
+{# Shared invoice markup. Included by invoice_print.html and invoice_pdf.html. #}
+<div class="inv">
+
+    <header class="inv__head">
+        <div class="inv__company">
+            {% if company and company.logo %}
+                <img src="{{ company.logo.url }}" alt="{{ company.company_name }}" class="inv__logo">
+            {% endif %}
+            <h1>{{ company.company_name|default:"Smart Rent Car" }}</h1>
+            {% if company %}
+                <p>{{ company.address|linebreaksbr }}</p>
+                <p>
+                    {% if company.phone %}{% trans "Tél" %} : {{ company.phone }}{% endif %}
+                    {% if company.email %} · {{ company.email }}{% endif %}
+                </p>
+                {% if company.website %}<p>{{ company.website }}</p>{% endif %}
+                <p class="inv__ids">
+                    {% if company.ice %}ICE : {{ company.ice }}{% endif %}
+                    {% if company.rc %} · RC : {{ company.rc }}{% endif %}
+                    {% if company.patente %} · Patente : {{ company.patente }}{% endif %}
+                    {% if company.if_number %} · IF : {{ company.if_number }}{% endif %}
+                </p>
+            {% endif %}
+        </div>
+
+        <div class="inv__meta">
+            <h2>{% trans "FACTURE" %}</h2>
+            <p class="inv__number">{{ invoice.number }}</p>
+            <p>{{ invoice.issued_at|date:"d/m/Y" }}</p>
+            {% if invoice.issued_by %}
+                <p class="inv__by">{{ invoice.issued_by.get_full_name }}</p>
+            {% endif %}
+        </div>
+    </header>
+
+    <section class="inv__parties">
+        <div class="inv__party">
+            <h3>{% trans "Client" %}</h3>
+            <p class="inv__strong">{{ invoice.client_snapshot.name }}</p>
+            {% if invoice.client_snapshot.address %}<p>{{ invoice.client_snapshot.address }}</p>{% endif %}
+            <p>{{ invoice.client_snapshot.country }}</p>
+            {% if invoice.client_snapshot.telephone %}<p>{% trans "Tél" %} : {{ invoice.client_snapshot.telephone }}</p>{% endif %}
+            {% if invoice.client_snapshot.email %}<p>{{ invoice.client_snapshot.email }}</p>{% endif %}
+            {% if invoice.client_snapshot.id_document %}
+                <p>{% trans "CIN / Passeport" %} : {{ invoice.client_snapshot.id_document }}</p>
+            {% endif %}
+        </div>
+
+        <div class="inv__party">
+            <h3>{% trans "Véhicule" %}</h3>
+            <p class="inv__strong">{{ invoice.car_snapshot.brand }} {{ invoice.car_snapshot.model }}</p>
+            <p>{% trans "Immatriculation" %} : {{ invoice.car_snapshot.plate_number }}</p>
+            <p>{{ invoice.car_snapshot.category }}</p>
+            <p>{{ invoice.car_snapshot.fuel_type }} · {{ invoice.car_snapshot.transmission }}</p>
+            <p>{{ invoice.car_snapshot.year }} · {{ invoice.car_snapshot.seats }} {% trans "places" %}</p>
+        </div>
+    </section>
+
+    <section class="inv__period">
+        <table class="inv__times">
+            <tr>
+                <th>{% trans "Départ" %}</th>
+                <td>{{ invoice.dates_snapshot.start_date }}</td>
+                <th>{% trans "Retour" %}</th>
+                <td>{{ invoice.dates_snapshot.end_date }}</td>
+                <th>{% trans "Jours" %}</th>
+                <td>{{ invoice.dates_snapshot.days }}</td>
+            </tr>
+        </table>
+    </section>
+
+    <table class="inv__lines">
+        <thead>
+            <tr>
+                <th>{% trans "Désignation" %}</th>
+                <th class="num">{% trans "Qté" %}</th>
+                <th class="num">{% trans "Prix unitaire" %}</th>
+                <th class="num">{% trans "Montant" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    {% trans "Location de véhicule" %} — {{ invoice.car_label }}
+                    <br><small>{{ invoice.plate_number }}</small>
+                </td>
+                <td class="num">{{ invoice.dates_snapshot.days }}</td>
+                <td class="num">{{ invoice.price_snapshot.price_per_day }}</td>
+                <td class="num">{{ invoice.price_snapshot.base_price }}</td>
+            </tr>
+            {% for option in invoice.options_snapshot %}
+                <tr>
+                    <td>{{ option.option_type }}</td>
+                    <td class="num">{{ option.quantity }}</td>
+                    <td class="num">{{ option.price }}</td>
+                    <td class="num">{{ option.subtotal }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <section class="inv__totals">
+        <table>
+            <tr>
+                <th>{% trans "Sous-total" %}</th>
+                <td class="num">{{ invoice.subtotal|floatformat:2 }} MAD</td>
+            </tr>
+            {% if invoice.discount_amount %}
+                <tr>
+                    <th>{% trans "Remise" %}{% if invoice.promotion_code %} ({{ invoice.promotion_code }}){% endif %}</th>
+                    <td class="num">− {{ invoice.discount_amount|floatformat:2 }} MAD</td>
+                </tr>
+                <tr>
+                    <th>{% trans "Net HT" %}</th>
+                    <td class="num">{{ invoice.net_amount|floatformat:2 }} MAD</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <th>{% trans "TVA" %} {{ invoice.vat_rate }}%</th>
+                <td class="num">{{ invoice.vat_amount|floatformat:2 }} MAD</td>
+            </tr>
+            <tr class="inv__grand">
+                <th>{% trans "NET À PAYER" %}</th>
+                <td class="num">{{ invoice.total_amount|floatformat:2 }} MAD</td>
+            </tr>
+        </table>
+    </section>
+
+    <footer class="inv__foot">
+        {% if company and company.bank_details %}
+            <div class="inv__bank">
+                <h4>{% trans "Coordonnées bancaires" %}</h4>
+                <p>{{ company.bank_details|linebreaksbr }}</p>
+            </div>
+        {% endif %}
+        {% if company and company.invoice_footer %}
+            <p class="inv__footer-text">{{ company.invoice_footer }}</p>
+        {% endif %}
+        <p class="inv__legal">
+            {% trans "Facture émise électroniquement — document immuable." %}
+            {% if invoice.printed_count %}{% trans "Impressions" %} : {{ invoice.printed_count }}.{% endif %}
+        </p>
+    </footer>
+</div>

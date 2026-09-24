@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Clients" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Clients" %}</h1>
+    <div class="page-head__actions">
+        <a class="btn" href="{% url 'clients:client_add' %}">+ {% trans "Nouveau client" %}</a>
+    </div>
+</div>
+
+<form method="get" class="filter-bar">
+    <div class="field">
+        <label for="q">{% trans "Recherche" %}</label>
+        <input type="search" id="q" name="q" value="{{ q }}"
+               placeholder="{% trans 'Nom, téléphone, document, pays…' %}">
+    </div>
+    <button class="btn btn--ghost" type="submit">{% trans "Filtrer" %}</button>
+</form>
+
+<div class="card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>{% trans "Nom" %}</th>
+                    <th>{% trans "Téléphone" %}</th>
+                    <th>{% trans "Pays" %}</th>
+                    <th>{% trans "Document" %}</th>
+                    <th class="num">{% trans "Réservations" %}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                    <tr>
+                        <td><a href="{% url 'clients:client_detail' client.pk %}">{{ client.name }}</a></td>
+                        <td class="nowrap">
+                            {{ client.telephone }}
+                            {% if client.whatsapp_link %}
+                                <a class="btn btn--link btn--sm" href="{{ client.whatsapp_link }}" target="_blank" rel="noopener">WhatsApp</a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ client.country }}
+                            {% if client.is_international %}<span class="badge badge--pending">{% trans "International" %}</span>{% endif %}
+                        </td>
+                        <td>{{ client.id_document|default:"—" }}</td>
+                        <td class="num">{{ client.booking_count }}</td>
+                        <td class="nowrap"><a href="{% url 'clients:client_edit' client.pk %}">{% trans "Modifier" %}</a></td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="6" class="empty">{% trans "Aucun client." %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "partials/pagination.html" %}
+{% endblock %}

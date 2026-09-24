@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Connexion" %}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>{% trans "Connexion" %}</h2>
+    <p class="muted">{% trans "Accès réservé au personnel." %}</p>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {% include "partials/form_fields.html" %}
+        <button class="btn" type="submit">{% trans "Se connecter" %}</button>
+    </form>
+</div>
+{% endblock %}

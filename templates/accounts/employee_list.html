@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Employés" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Employés" %}</h1>
+    <div class="page-head__actions">
+        <a class="btn" href="{% url 'accounts:employee_add' %}">+ {% trans "Nouvel employé" %}</a>
+    </div>
+</div>
+
+<form method="get" class="filter-bar">
+    <div class="field">
+        <label for="q">{% trans "Recherche" %}</label>
+        <input type="search" id="q" name="q" value="{{ q }}" placeholder="{% trans 'Nom, email, CIN…' %}">
+    </div>
+    <div class="field">
+        <label for="role">{% trans "Rôle" %}</label>
+        <select id="role" name="role">
+            <option value="">{% trans "Tous les rôles" %}</option>
+            {% for value, label in role_choices %}
+                <option value="{{ value }}" {% if value == role_filter %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn--ghost" type="submit">{% trans "Filtrer" %}</button>
+</form>
+
+<div class="card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>{% trans "Nom" %}</th>
+                    <th>{% trans "Email" %}</th>
+                    <th>{% trans "Téléphone" %}</th>
+                    <th>{% trans "CIN" %}</th>
+                    <th>{% trans "Rôle" %}</th>
+                    <th>{% trans "Statut" %}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                    <tr>
+                        <td>{{ employee.get_full_name }}</td>
+                        <td>{{ employee.email }}</td>
+                        <td class="nowrap">{{ employee.telephone|default:"—" }}</td>
+                        <td>{{ employee.cin|default:"—" }}</td>
+                        <td><span class="badge badge--{{ employee.role|lower }}">{{ employee.get_role_display }}</span></td>
+                        <td>
+                            {% if employee.is_active %}
+                                <span class="badge badge--available">{% trans "Actif" %}</span>
+                            {% else %}
+                                <span class="badge badge--cancelled">{% trans "Inactif" %}</span>
+                            {% endif %}
+                        </td>
+                        <td class="nowrap">
+                            <a href="{% url 'accounts:employee_edit' employee.pk %}">{% trans "Modifier" %}</a>
+                            {% if employee.pk != user.pk %}
+                                <form action="{% url 'accounts:employee_toggle' employee.pk %}" method="post" class="inline"
+                                      onsubmit="return confirm('{% trans "Confirmer le changement de statut ?" %}');">
+                                    {% csrf_token %}
+                                    <button class="btn btn--link btn--sm" type="submit">
+                                        {% if employee.is_active %}{% trans "Désactiver" %}{% else %}{% trans "Réactiver" %}{% endif %}
+                                    </button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="7" class="empty">{% trans "Aucun employé." %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "partials/pagination.html" %}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% if object %}{% trans "Modifier un employé" %}{% else %}{% trans "Nouvel employé" %}{% endif %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% if object %}{% trans "Modifier un employé" %}{% else %}{% trans "Nouvel employé" %}{% endif %}</h1>
+    <div class="page-head__actions">
+        <a class="btn btn--ghost" href="{% url 'accounts:employee_list' %}">{% trans "Retour" %}</a>
+    </div>
+</div>
+
+<div class="card">
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        <div class="grid grid--2">
+            <div>
+                <h2>{% trans "Identité" %}</h2>
+                {% for field in form %}
+                    {% if field.name in "first_name,last_name,email,telephone,whatsapp,cin,role,is_active" %}
+                        <div class="field {% if field.errors %}field--error{% endif %}">
+                            <label for="{{ field.id_for_label }}">
+                                {{ field.label }}{% if field.field.required %} <span class="req">*</span>{% endif %}
+                            </label>
+                            {{ field }}
+                            {% if field.help_text %}<p class="field__help">{{ field.help_text }}</p>{% endif %}
+                            {% for error in field.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div>
+                <h2>{% trans "Mot de passe" %}</h2>
+                {% if form.non_field_errors %}
+                    <div class="alert alert--error">
+                        {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+                    </div>
+                {% endif %}
+                {% for field in form %}
+                    {% if field.name in "password1,password2" %}
+                        <div class="field {% if field.errors %}field--error{% endif %}">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.help_text %}<p class="field__help">{{ field.help_text }}</p>{% endif %}
+                            {% for error in field.errors %}<p class="field__error">{{ error }}</p>{% endfor %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <button class="btn" type="submit">{% trans "Enregistrer" %}</button>
+    </form>
+</div>
+{% endblock %}

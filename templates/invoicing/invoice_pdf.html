@@ -1,0 +1,60 @@
+{% load i18n %}<!DOCTYPE html>
+<html lang="{{ current_language|default:'fr' }}" dir="{% if is_rtl %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="utf-8">
+    <title>{{ invoice.number }}</title>
+    <style>
+        /* WeasyPrint-friendly: no flexbox gaps, explicit @page, pt units. */
+        @page { size: A4; margin: 14mm 14mm 16mm; }
+
+        * { box-sizing: border-box; }
+        body { margin: 0; color: #111; font: 10.5pt/1.4 "DejaVu Sans", Arial, sans-serif; }
+        .inv { width: 100%; }
+
+        .inv__head { display: flex; justify-content: space-between; border-bottom: 2pt solid #111; padding-bottom: 6pt; }
+        .inv__company { max-width: 60%; }
+        .inv__company h1 { margin: 0 0 3pt; font-size: 15pt; }
+        .inv__company p { margin: 0; color: #555; font-size: 8.5pt; }
+        .inv__ids { font-size: 7.5pt !important; }
+        .inv__logo { max-height: 42pt; margin-bottom: 4pt; }
+        .inv__meta { text-align: right; }
+        .inv__meta h2 { margin: 0; font-size: 16pt; letter-spacing: .06em; }
+        .inv__number { font-size: 12pt; font-weight: 700; margin: 3pt 0; }
+        .inv__meta p { margin: 0; color: #555; font-size: 8.5pt; }
+
+        .inv__parties { display: flex; margin: 12pt 0; }
+        .inv__party { width: 50%; }
+        .inv__party:last-child { padding-left: 12pt; }
+        .inv__party h3 { margin: 0 0 3pt; font-size: 7.5pt; text-transform: uppercase; letter-spacing: .07em; color: #666; }
+        .inv__party p { margin: 0; font-size: 9pt; }
+        .inv__strong { font-weight: 700; font-size: 10pt !important; }
+
+        .inv__period { margin-bottom: 10pt; }
+        .inv__times { width: 100%; border-collapse: collapse; }
+        .inv__times th, .inv__times td { border: .5pt solid #bbb; padding: 4pt 6pt; font-size: 8.5pt; }
+        .inv__times th { background: #f4f4f4; text-align: left; font-weight: 600; }
+
+        .inv__lines { width: 100%; border-collapse: collapse; margin-bottom: 10pt; }
+        .inv__lines th, .inv__lines td { border: .5pt solid #bbb; padding: 5pt 6pt; font-size: 8.5pt; }
+        .inv__lines thead th { background: #f4f4f4; text-align: left; }
+        .inv__lines small { color: #666; font-size: 7.5pt; }
+
+        .inv__totals { width: 100%; }
+        .inv__totals table { width: 45%; margin-left: auto; border-collapse: collapse; }
+        .inv__totals th, .inv__totals td { padding: 4pt 6pt; font-size: 9pt; border-bottom: .5pt solid #bbb; }
+        .inv__totals th { text-align: left; color: #555; font-weight: 500; }
+        .inv__grand th, .inv__grand td { border-top: 1.5pt solid #111; border-bottom: 1.5pt solid #111; font-size: 11pt; font-weight: 700; color: #111; }
+
+        .inv__foot { margin-top: 16pt; border-top: .5pt solid #bbb; padding-top: 8pt; color: #555; font-size: 8pt; }
+        .inv__bank h4 { margin: 0 0 2pt; font-size: 7.5pt; text-transform: uppercase; letter-spacing: .06em; color: #666; }
+        .inv__bank p { margin: 0 0 6pt; }
+        .inv__footer-text { white-space: pre-line; }
+        .inv__legal { font-size: 7.5pt; }
+
+        .num { text-align: right; }
+    </style>
+</head>
+<body>
+    {% include "invoicing/_invoice_body.html" %}
+</body>
+</html>

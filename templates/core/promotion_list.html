@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Promotions" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Promotions" %}</h1>
+    <div class="page-head__actions">
+        <a class="btn" href="{% url 'core:promotion_add' %}">+ {% trans "Nouvelle promotion" %}</a>
+    </div>
+</div>
+
+<form method="get" class="filter-bar">
+    <div class="field">
+        <label for="q">{% trans "Recherche" %}</label>
+        <input type="search" id="q" name="q" value="{{ q }}" placeholder="{% trans 'Code, description…' %}">
+    </div>
+    <button class="btn btn--ghost" type="submit">{% trans "Filtrer" %}</button>
+</form>
+
+<div class="card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>{% trans "Code" %}</th>
+                    <th>{% trans "Description" %}</th>
+                    <th>{% trans "Remise" %}</th>
+                    <th>{% trans "Validité" %}</th>
+                    <th>{% trans "Actif" %}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for promotion in promotions %}
+                    <tr>
+                        <td><strong>{{ promotion.code }}</strong></td>
+                        <td>{{ promotion.description|default:"—" }}</td>
+                        <td class="nowrap">
+                            {% if promotion.discount_type == "percentage" %}
+                                {{ promotion.discount_value }} %
+                            {% else %}
+                                {{ promotion.discount_value }} MAD
+                            {% endif %}
+                        </td>
+                        <td class="nowrap">
+                            {{ promotion.valid_from|date:"d/m/Y"|default:"—" }} → {{ promotion.valid_to|date:"d/m/Y"|default:"—" }}
+                        </td>
+                        <td>
+                            {% if promotion.is_valid_now %}
+                                <span class="badge badge--available">{% trans "En cours" %}</span>
+                            {% elif promotion.is_active %}
+                                <span class="badge badge--pending">{% trans "Hors période" %}</span>
+                            {% else %}
+                                <span class="badge badge--cancelled">{% trans "Inactif" %}</span>
+                            {% endif %}
+                        </td>
+                        <td><a href="{% url 'core:promotion_edit' promotion.pk %}">{% trans "Modifier" %}</a></td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="6" class="empty">{% trans "Aucune promotion." %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "partials/pagination.html" %}
+{% endblock %}

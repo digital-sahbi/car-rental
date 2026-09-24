@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Factures" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Factures" %}</h1>
+</div>
+
+<form method="get" class="filter-bar">
+    <div class="field">
+        <label for="q">{% trans "Recherche" %}</label>
+        <input type="search" id="q" name="q" value="{{ q }}" placeholder="{% trans 'Numéro, client, immatriculation…' %}">
+    </div>
+    <button class="btn btn--ghost" type="submit">{% trans "Filtrer" %}</button>
+</form>
+
+<div class="card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>{% trans "Numéro" %}</th>
+                    <th>{% trans "Émise le" %}</th>
+                    <th>{% trans "Client" %}</th>
+                    <th>{% trans "Véhicule" %}</th>
+                    <th class="num">{% trans "Sous-total" %}</th>
+                    <th class="num">{% trans "Remise" %}</th>
+                    <th class="num">{% trans "Net à payer" %}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for invoice in invoices %}
+                    <tr>
+                        <td><strong>{{ invoice.number }}</strong></td>
+                        <td class="nowrap">{{ invoice.issued_at|date:"d/m/Y" }}</td>
+                        <td>{{ invoice.client_name }}</td>
+                        <td>{{ invoice.plate_number }}<br><small class="muted">{{ invoice.car_label }}</small></td>
+                        <td class="num">{{ invoice.subtotal|floatformat:2 }}</td>
+                        <td class="num">{{ invoice.discount_amount|floatformat:2 }}</td>
+                        <td class="num"><strong>{{ invoice.total_amount|floatformat:2 }}</strong></td>
+                        <td class="nowrap">
+                            <a href="{% url 'invoicing:invoice_print' invoice.booking_id %}" target="_blank" rel="noopener">{% trans "Imprimer" %}</a>
+                            <a href="{% url 'invoicing:invoice_pdf' invoice.booking_id %}">PDF</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="8" class="empty">{% trans "Aucune facture." %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "partials/pagination.html" %}
+{% endblock %}

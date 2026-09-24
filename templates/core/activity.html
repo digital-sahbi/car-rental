@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Historique des actions" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Historique des actions" %}</h1>
+    <span class="muted">
+        {% if can_see_all %}
+            {% trans "Journal complet du CRM." %}
+        {% else %}
+            {% trans "Actions concernant vos réservations." %}
+        {% endif %}
+    </span>
+    {% if can_see_all %}
+        <div class="page-head__actions">
+            <a class="btn btn--ghost" href="{% url 'core:audit_log' %}">{% trans "Filtres avancés" %}</a>
+        </div>
+    {% endif %}
+</div>
+
+<form method="get" class="filter-bar">
+    <div class="field">
+        <label for="action">{% trans "Action" %}</label>
+        <select id="action" name="action" onchange="this.form.submit()">
+            <option value="">{% trans "Toutes les actions" %}</option>
+            {% for value, label in action_choices %}
+                <option value="{{ value }}" {% if value == action_filter %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn--ghost" type="submit">{% trans "Filtrer" %}</button>
+</form>
+
+<div class="card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>{% trans "Horodatage" %}</th>
+                    <th>{% trans "Utilisateur" %}</th>
+                    <th>{% trans "Action" %}</th>
+                    <th>{% trans "Objet" %}</th>
+                    <th>{% trans "Détail" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entries %}
+                    <tr>
+                        <td class="nowrap">{{ entry.timestamp|date:"d/m/Y H:i" }}</td>
+                        <td>{{ entry.user|default:"—" }}</td>
+                        <td><span class="badge badge--{{ entry.action|lower }}">{{ entry.get_action_display }}</span></td>
+                        <td>
+                            {% if entry.model_name == "Booking" %}
+                                <a href="{% url 'bookings:booking_detail' entry.object_id %}">#{{ entry.object_id }}</a>
+                            {% else %}
+                                {{ entry.model_name }}#{{ entry.object_id }}
+                            {% endif %}
+                            <br><small class="muted">{{ entry.object_repr|truncatechars:60 }}</small>
+                        </td>
+                        <td><small class="muted">{{ entry.changes|truncatechars:120 }}</small></td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="5" class="empty">{% trans "Aucune action enregistrée." %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "partials/pagination.html" %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Archiver le véhicule" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Archiver ce véhicule ?" %}</h1>
+</div>
+
+<div class="card">
+    <p>
+        {% blocktrans with car=object.full_name %}Le véhicule « {{ car }} » sera archivé (suppression logique). Son historique de réservations reste consultable.{% endblocktrans %}
+    </p>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn--danger" type="submit">{% trans "Confirmer l'archivage" %}</button>
+        <a class="btn btn--ghost" href="{% url 'vehicles:car_list' %}">{% trans "Annuler" %}</a>
+    </form>
+</div>
+{% endblock %}

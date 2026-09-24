@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ client.name }}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{{ client.name }}</h1>
+    <div class="page-head__actions">
+        <a class="btn" href="{% url 'bookings:booking_add' %}?client={{ client.pk }}">+ {% trans "Réserver" %}</a>
+        {% if client.whatsapp_link %}
+            <a class="btn btn--ok" href="{{ client.whatsapp_link }}" target="_blank" rel="noopener">{% trans "WhatsApp" %}</a>
+        {% endif %}
+        <a class="btn btn--ghost" href="{% url 'clients:client_edit' client.pk %}">{% trans "Modifier" %}</a>
+    </div>
+</div>
+
+<div class="grid grid--2">
+    <div class="card">
+        <h2>{% trans "Coordonnées" %}</h2>
+        <dl class="kv">
+            <dt>{% trans "Téléphone" %}</dt><dd>{{ client.telephone|default:"—" }}</dd>
+            <dt>{% trans "WhatsApp" %}</dt><dd>{{ client.whatsapp|default:"—" }}</dd>
+            <dt>{% trans "Email" %}</dt><dd>{{ client.email|default:"—" }}</dd>
+            <dt>{% trans "Adresse" %}</dt><dd>{{ client.address|default:"—" }}</dd>
+            <dt>{% trans "Pays" %}</dt><dd>{{ client.country }}</dd>
+            <dt>{% trans "CIN / Passeport" %}</dt><dd>{{ client.id_document|default:"—" }}</dd>
+        </dl>
+        {% if client.comment %}<p>{{ client.comment }}</p>{% endif %}
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Historique" %}</h2>
+        <div class="table-wrap">
+            <table class="data">
+                <thead>
+                    <tr><th>{% trans "N°" %}</th><th>{% trans "Véhicule" %}</th><th>{% trans "Période" %}</th><th class="num">{% trans "Total" %}</th></tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                        <tr>
+                            <td><a href="{% url 'bookings:booking_detail' booking.pk %}">#{{ booking.pk }}</a></td>
+                            <td>{{ booking.car.plate_number }}</td>
+                            <td class="nowrap">{{ booking.start_date|date:"d/m/Y" }} → {{ booking.end_date|date:"d/m/Y" }}</td>
+                            <td class="num">{{ booking.total_price|floatformat:2 }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="4" class="empty">{% trans "Aucune réservation." %}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

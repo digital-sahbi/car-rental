@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% if is_edit %}{% trans "Modifier un véhicule" %}{% else %}{% trans "Nouveau véhicule" %}{% endif %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% if object %}{% trans "Modifier le véhicule" %}{% else %}{% trans "Nouveau véhicule" %}{% endif %}</h1>
+    <div class="page-head__actions">
+        <a class="btn btn--ghost" href="{% url 'vehicles:car_list' %}">{% trans "Retour" %}</a>
+    </div>
+</div>
+
+<form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+
+    <div class="card">
+        <h2>{% trans "Informations" %}</h2>
+        {% include "partials/form_fields.html" %}
+    </div>
+
+    <div class="card">
+        <h2>{% trans "Galerie photos" %}</h2>
+        {{ image_formset.management_form }}
+        <div class="table-wrap">
+            <table class="data">
+                <thead>
+                    <tr>
+                        <th>{% trans "Image" %}</th>
+                        <th>{% trans "Principale" %}</th>
+                        <th>{% trans "Supprimer" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for subform in image_formset %}
+                        <tr>
+                            {% for hidden in subform.hidden_fields %}{{ hidden }}{% endfor %}
+                            <td>{{ subform.image }}{% for e in subform.image.errors %}<p class="field__error">{{ e }}</p>{% endfor %}</td>
+                            <td>{{ subform.is_main }}</td>
+                            <td>{% if subform.instance.pk %}{{ subform.DELETE }}{% else %}<span class="muted">—</span>{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% for e in image_formset.non_form_errors %}<p class="field__error">{{ e }}</p>{% endfor %}
+    </div>
+
+    <button class="btn" type="submit">{% trans "Enregistrer" %}</button>
+</form>
+{% endblock %}

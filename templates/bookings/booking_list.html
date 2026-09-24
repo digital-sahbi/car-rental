@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Réservations" %}{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>{% trans "Réservations" %} <span class="muted">({{ total_count }})</span></h1>
+    <div class="page-head__actions">
+        {% if can_see_all %}
+            {% if only_own %}
+                <a class="btn btn--ghost btn--sm" href="?sort={{ sort }}">{% trans "Toutes les réservations" %}</a>
+            {% else %}
+                <a class="btn btn--ghost btn--sm" href="?mine=1&sort={{ sort }}">{% trans "Mes réservations" %}</a>
+            {% endif %}
+        {% endif %}
+        <a class="btn" href="{% url 'bookings:booking_add' %}">+ {% trans "Nouvelle réservation" %}</a>
+        <a class="btn btn--ghost" href="{% url 'bookings:booking_export' %}?{{ request.GET.urlencode }}&format=csv">{% trans "Export CSV" %}</a>
+        <a class="btn btn--ghost" href="{% url 'bookings:booking_export' %}?{{ request.GET.urlencode }}&format=xlsx">{% trans "Export Excel" %}</a>
+    </div>
+</div>
+
+{% if only_own %}
+    <p class="muted">
+        {% if can_see_all %}
+            {% trans "Filtre actif : vous voyez uniquement vos réservations." %}
+        {% else %}
+            {% trans "Vous voyez uniquement les réservations que vous avez enregistrées." %}
+        {% endif %}
+    </p>
+{% endif %}
+
+<form method="get" class="filter-bar">
+    {% if only_own %}<input type="hidden" name="mine" value="1">{% endif %}
+    <div class="field">
+        <label for="q">{% trans "Recherche" %}</label>
+        <input type="search" id="q" name="q" value="{{ request.GET.q }}"
+               placeholder="{% trans 'Client, immatriculation, lieu…' %}">
+    </div>
+    <div class="field">
+        <label for="status">{% trans "Statut" %}</label>
+        <select id="status" name="status">
+            <option value="">{% trans "Tous les statuts" %}</option>
+            {% for value, label in status_choices %}
+                <option value="{{ value }}" {% if request.GET.status == value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="field">
+        <label for="car">{% trans "Véhicule" %}</label>
+        <select id="car" name="car">
+            <option value="">{% trans "Tous" %}</option>
+            {% for car in cars %}
+                <option value="{{ car.pk }}" {% if request.GET.car == car.pk|stringformat:"s" %}selected{% endif %}>
+                    {{ car.plate_number }} — {{ car.full_name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="field">
+        <label for="sort">{% trans "Trier par" %}</label>
+        <select id="sort" name="sort" onchange="this.form.submit()">
+            {% for value, label in sort_choices %}
+                <option value="{{ value }}" {% if value == sort|default:"recent" %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button class="btn btn--ghost" type="submit">{% trans "Filtrer" %}</button>
+</form>
+
+<div class="card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>{% trans "N°" %}</th>
+                    <th>{% trans "Client" %}</th>
+                    <th>{% trans "Véhicule" %}</th>
+                    <th>{% trans "Période" %}</th>
+                    <th class="num">{% trans "Jours" %}</th>
+                    <th class="num">{% trans "Total" %}</th>
+                    <th>{% trans "Statut" %}</th>
+                    <th>{% trans "Facture" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                    <tr>
+                        <td><a href="{% url 'bookings:booking_detail' booking.pk %}">#{{ booking.pk }}</a></td>
+                        <td>{{ booking.client.name }}<br><small class="muted">{{ booking.client.telephone }}</small></td>
+                        <td>{{ booking.car.plate_number }}<br><small class="muted">{{ booking.car.full_name }}</small></td>
+                        <td class="nowrap">{{ booking.start_date|date:"d/m/Y" }}<br>{{ booking.end_date|date:"d/m/Y" }}</td>
+                        <td class="num">{{ booking.days }}</td>
+                        <td class="num">{{ booking.total_price|floatformat:2 }}</td>
+                        <td><span class="badge badge--{{ booking.status }}">{{ booking.get_status_display }}</span></td>
+                        <td>
+                            {% if booking.invoice %}
+                                <a href="{% url 'invoicing:invoice_print' booking.pk %}" target="_blank" rel="noopener">{{ booking.invoice.number }}</a>
+                            {% else %}
+                                <span class="muted">—</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="8" class="empty">{% trans "Aucune réservation." %}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "partials/pagination.html" %}
+{% endblock %}
